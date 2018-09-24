@@ -1,4 +1,4 @@
 <?php
-$template = 'TestConnection';
+$template = 'character';
 include 'layout/layout.phtml';
 

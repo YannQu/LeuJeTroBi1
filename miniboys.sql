@@ -158,13 +158,11 @@ CREATE TABLE IF NOT EXISTS `relation_equipement_campagne` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `id_personnage` int(11) NOT NULL,
   PRIMARY KEY (`id_utilisateur`),
-  UNIQUE KEY `utilisateur_AK0` (`username`,`email`),
-  UNIQUE KEY `utilisateur_personnage0_AK` (`id_personnage`)
+  UNIQUE KEY `utilisateur_AK0` (`username`,`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -197,12 +195,6 @@ ALTER TABLE `relation_equipement_campagne`
   ADD CONSTRAINT `relation_equipement_campagne_campagne0_FK` FOREIGN KEY (`id_campagne`) REFERENCES `campagne` (`id_campagne`),
   ADD CONSTRAINT `relation_equipement_campagne_equipement1_FK` FOREIGN KEY (`id_equipement`) REFERENCES `equipement` (`id_equipement`);
 
---
--- Contraintes pour la table `utilisateur`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `utilisateur_personnage0_FK` FOREIGN KEY (`id_personnage`) REFERENCES `personnage` (`id_personnage`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

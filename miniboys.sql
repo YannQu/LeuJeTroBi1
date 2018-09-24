@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 24 sep. 2018 à 09:17
+-- Généré le :  lun. 24 sep. 2018 à 11:51
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `campagne` (
   `xp_gagne` int(11) NOT NULL,
   `niveau` int(11) NOT NULL,
   `id_ennemi` int(11) NOT NULL,
+  `resolu` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_campagne`),
   UNIQUE KEY `campagne_AK` (`niveau`),
   KEY `campagne_ennemi0_FK` (`id_ennemi`)
@@ -43,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `campagne` (
 -- Déchargement des données de la table `campagne`
 --
 
-INSERT INTO `campagne` (`id_campagne`, `xp_gagne`, `niveau`, `id_ennemi`) VALUES
-(1, 100, 1, 1);
+INSERT INTO `campagne` (`id_campagne`, `xp_gagne`, `niveau`, `id_ennemi`, `resolu`) VALUES
+(1, 100, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -154,15 +155,15 @@ CREATE TABLE IF NOT EXISTS `relation_equipement_campagne` (
 -- Structure de la table `utilisateur`
 --
 
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
   `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT,
-  `mdp` varchar(50) NOT NULL,
-  `pseudo` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `id_personnage` int(11) NOT NULL,
   PRIMARY KEY (`id_utilisateur`),
-  UNIQUE KEY `utilisateur_AK0` (`pseudo`,`email`),
+  UNIQUE KEY `utilisateur_AK0` (`username`,`email`),
   UNIQUE KEY `utilisateur_personnage0_AK` (`id_personnage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -187,7 +188,7 @@ ALTER TABLE `inventaire`
 -- Contraintes pour la table `personnage`
 --
 ALTER TABLE `personnage`
-  ADD CONSTRAINT `personnage_utilisateur0_FK` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
+  ADD CONSTRAINT `personnage_utilisateur0_FK` FOREIGN KEY (`id_utilisateur`) REFERENCES `users` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `relation_equipement_campagne`
@@ -199,7 +200,7 @@ ALTER TABLE `relation_equipement_campagne`
 --
 -- Contraintes pour la table `utilisateur`
 --
-ALTER TABLE `utilisateur`
+ALTER TABLE `users`
   ADD CONSTRAINT `utilisateur_personnage0_FK` FOREIGN KEY (`id_personnage`) REFERENCES `personnage` (`id_personnage`);
 COMMIT;
 

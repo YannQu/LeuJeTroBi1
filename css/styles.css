@@ -1,0 +1,12 @@
+#home{
+    background-image: url(../img/background.png);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.connexionContainer{
+    width: 400px;
+    height: 400px;
+    background-color: black;
+    opacity: 0.7;
+}

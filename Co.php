@@ -1,4 +1,4 @@
 <?php
-$template = 'index';
+$template = 'TestConnection';
 include 'layout/layout.phtml';
 

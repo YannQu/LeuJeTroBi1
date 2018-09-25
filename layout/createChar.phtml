@@ -1,45 +1,53 @@
 <?php
 require 'php/createChar.php';
 ?>
-
-<div  class="">
-    <h2>Création du personnage</h2>
-    <form method="post" align="center">
+<div class="row">
+    <div class="container-fluid" id="createChar">
         <div class="row">
-            <div class="col-md-6">
-                <p>Image du perso</p>
+            <div id="menu">
+                <h1 class="logo">MiniBoys</h1>
+                <a href="php/delete.php" class=" btn-default btn off ">deconnection</a>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Sexe :</label>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="sexeRadios1" name="sexeRadios" class="custom-control-input" value="0" checked>
-                      <label class="custom-control-label" for="sexeRadios1">Masculin</label>
+            <div class="container-fluid">
+                <h2>Création du personnage</h2>
+                <form method="post" align="center">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-6  m-2  box">
+                            <div class="form-group">
+                                <h3>Classe :</h3>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="classeRadios1" name="classeRadios" class="custom-control-input guerrierChoice" value="0" checked>
+                                    <label class="custom-control-label" for="classeRadios1">Guerrier</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="classeRadios2" name="classeRadios" class="custom-control-input archerChoice" value="1">
+                                    <label class="custom-control-label" for="classeRadios2">Archer</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="classeRadios3" name="classeRadios" class="custom-control-input mageChoice" value="2">
+                                    <label class="custom-control-label" for="classeRadios3">Mage</label>
+                                </div>
+                            </div>
+                            <img class="characterImg" src="/MiniBoys/img/guerrier.png" alt="">
+                        </div>
                     </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="sexeRadios2" name="sexeRadios" class="custom-control-input" value="1">
-                      <label class="custom-control-label" for="sexeRadios2">Féminin</label>
-                    </div>
-                    <!--<input class="form-check-input" type="radio" name="sexeRadios" id="sexeRadios1" value="M" checked>
-                    <input class="form-check-input" type="radio" name="sexeRadios" id="sexeRadios2" value="F">-->
-                </div>
-                <div class="form-group">
-                    <label>Classe :</label>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="classeRadios1" name="classeRadios" class="custom-control-input" value="0" checked>
-                      <label class="custom-control-label" for="classeRadios1">Guerrier</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="classeRadios2" name="classeRadios" class="custom-control-input" value="1">
-                      <label class="custom-control-label" for="classeRadios2">Archer</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="classeRadios3" name="classeRadios" class="custom-control-input" value="2">
-                      <label class="custom-control-label" for="classeRadios3">Mage</label>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-default">Valider</button>
+                </form>
             </div>
         </div>
-        <button type="submit" class="btn">Valider mon personnage</button>
-    </form>
+    </div>
 </div>
+<script>
+    function changeCharacterImg() {
+        $(".guerrierChoice").click(function() {
+            $(".characterImg").attr("src","/MiniBoys/img/guerrier.png");
+        });
+        $(".archerChoice").click(function() {
+            $(".characterImg").attr("src","/MiniBoys/img/archer.png");
+        });
+        $(".mageChoice").click(function() {
+            $(".characterImg").attr("src","/MiniBoys/img/mage.png");
+        });
+    }
+    changeCharacterImg();
+</script>

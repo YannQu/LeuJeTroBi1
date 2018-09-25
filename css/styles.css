@@ -1,12 +1,182 @@
-#home{
-    background-image: url(../img/background.png);
+body,
+html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    color: #60a20b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#home {
+    background-image: url(../img/background.jpg);
     background-size: cover;
-    width: 100vw;
+    background-color: black;
     height: 100vh;
 }
-.connexionContainer{
-    width: 400px;
-    height: 400px;
-    background-color: black;
-    opacity: 0.7;
+
+header {
+    background-color: transparent;
+    margin: 0px;
+    height: 10vh;
+    position: absolute;
+}
+
+.connexionContainer {
+    margin-top: 10vh;
+    border-radius: 3px;
+    height: auto;
+    padding: 20px;
+    padding-top: 0px;
+    background-color: #e3cb8f;
+    position: relative;
+    border-bottom: 10px solid #b79e60;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+}
+
+.tab-content {
+    width: 300px;
+    margin: auto;
+}
+
+.connexionContainer h2,
+label {
+    width: 100%;
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    color: #805b04;
+}
+
+.tab-content > .active {}
+
+h1 {
+    font-weight: bold;
+  text-shadow: 0 1px 0 #ccc, 
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+    padding: 10px;
+    margin: 0px;
+    color: white;
+    font-weight: bold;
+    font-size: 70px;
+}
+
+.nav-item {
+    padding: 15px;
+}
+
+.nav-link {
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 15px;
+    height: 50px;
+    width: auto;
+    border: none;
+
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    border: none;
+    background-color: transparent;
+    color: color: #805b04;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+    border: none;
+}
+
+.nav-tabs {
+    border: none;
+    color: color: #805b04;
+    height: 50px;
+}
+
+.form-control {
+    border: none;
+    color: white;
+    background-image: url(../img/woodBar.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 0px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    width: 230px;
+    margin: auto;
+}
+
+.form-control:focus {
+    color: white;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+input[type="text"] {
+    color: white;
+}
+
+.btn-default {
+    background-image: url(../img/baseBtn.png);
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: auto;
+    text-align: center;
+    color: #60a20b;
+    font-size: 18px;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    border-radius: 0px;
+    width: 150px;
+    line-height: 50px;
+    font-weight: bold;
+    display: block;
+    margin: auto;
+
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    font-weight: bold;
+    color: transparent;
+    display: none;
+}
+
+.btn:not(:disabled):not(.disabled).active,
+.btn:not(:disabled):not(.disabled):active,
+.btn:focus,
+.btn:hover {
+    background-image: url(../img/baseBtnActive.png);
+    outline: none;
+}
+
+.nav-tabs .nav-item {
+    width: 50%;
+    text-align: center;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #805b04;
 }

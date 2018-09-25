@@ -53,25 +53,43 @@ require 'php/getCharacter.php';
             <div id="inventory" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
                 <h2>Inventaire</h2>
                 <div class="row d-flex justify-content-center">
-                    <div id="itemCell1" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell2" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell3" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell4" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell5" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell6" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell7" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell8" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell9" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell10" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell11" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell12" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell13" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell14" class="col-lg-3 itemCell m-1"></div>
-                    <div id="itemCell15" class="col-lg-3 itemCell m-1"></div>
-
+                    <?php foreach ($detailsInv as $i){ ?>
+                    <div id="itemCell<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1"> </div>
+                    <div id="overlay<?php echo  $cmpt ?>" class="overlay">
+                        <h5><?php echo  $i->nom_equipement ?></h5>
+                        <table>
+                            <tr>
+                                <td>Level :</td>
+                                <td><?php echo  $i->level_min ?></td>
+                            </tr>
+                            <tr>
+                                <td>Attaque :</td>
+                                <td><?php echo  $i->attaque ?></td>
+                            </tr>
+                            <tr>
+                                <td>Defense :</td>
+                                <td><?php echo  $i->defense ?></td>
+                            </tr>
+                            <tr>
+                                <td>Critique :</td>
+                                <td><?php echo  $i->critique ?></td>
+                            </tr>
+                            <tr>
+                                <td>Vie :</td>
+                                <td><?php echo  $i->vie ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <?php $cmpt += 1; } ?>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function showOverlay(index) {
+        document.getElementById("overlay"+index).style.display = "block";
+    }
+</script>

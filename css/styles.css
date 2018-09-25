@@ -336,3 +336,11 @@ a:hover {
     color: #674624;
     text-shadow: none;
 }
+
+.overlay {
+    opacity: 0;
+}
+
+.overlay:hover {
+    opacity: 1;
+}

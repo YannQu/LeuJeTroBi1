@@ -20,4 +20,4 @@ foreach ($inventaire as $i){
 	$req->execute(['id_equip' => $i->id_equipement]);
 	array_push($detailsInv, $req->fetch(PDO::FETCH_OBJ));
 }
-var_dump($detailsInv);
+//var_dump($detailsInv);

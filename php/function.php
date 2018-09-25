@@ -4,8 +4,8 @@
 ///
 ////////////////////
 require 'bd.php';
-//Pour verifier si les donnée, on était posté
-if(!empty($_POST))
+//Pour verifier si les donnée, on étées posté
+if(!empty($_POST) && $_POST['inscInp'] == 'inscription')
 {
     $success = true;
     $errors= array();
@@ -77,10 +77,12 @@ if(!empty($_POST))
         $req = $pdo->prepare('SELECT * FROM users WHERE username = ?');
         $req->execute(array($_POST['username']));
         $user = $req->fetch(PDO::FETCH_OBJ);
+
+        session_start();
         $_SESSION['auth'] = $user;
         $errors['success'] = true;
-        header('Location: Co.php');
-        //exit();
+        header('Location: Co.php?insc=yes');
+        exit();
 
 
     }
@@ -93,7 +95,7 @@ if(!empty($_POST))
 //Pour la connection
 
 //Si l'utilisateur a rentré un de c'est parametre
-if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
+if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']) && $_POST['conInp'] == 'connection'){
     //Pour les appelles a la base de données
     //$pdo = new PDO('mysql:host=localhost;dbname=testPageConnection;', 'root', 'ola450');
     //$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -107,10 +109,19 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
 
     //decryptage du mot de passe
     if(password_verify($_POST['password'], $user->password)){
+
         session_start();
         $_SESSION['auth'] = $user;
         $_SESSION['flash']['success'][] = 'Vous êtes maintenant connecter';
-        header('Location: Co.php');
+
+        $req = $pdo->prepare('SELECT * FROM personnage WHERE id_utilisateur = :id_user');
+        $req->execute(['id_user' => $user->id_utilisateur]);
+        $character = $req->fetch(PDO::FETCH_OBJ);
+        if ($character == false) {
+            header('Location: Co.php?insc=yes');
+        }else{
+            header('Location: Co.php');
+        }
         exit();
     }
     else{

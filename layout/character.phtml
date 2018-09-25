@@ -2,59 +2,73 @@
 require 'php/getCharacter.php';
 ?>
 
-<a href="php/delete.php" class="off">deconnection</a>
-<div  class="row">
-    <div  id="character" class="container-fluid">
+
+<div class="row">
+    <div id="character" class="container-fluid">
+
+
+
         <div class="row d-flex justify-content-center">
-            <div id="statsChar " class="col-md-3 m-2 box">
-                <h2>Stats :</h2>
-                <table>
-                    <tr>
-                        <td>Niveau :</td>
-                        <td>
-                            <?php echo $character->level ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Vie :</td>
-                        <td>
-                            <?php echo $character->vie ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Attaque :</td>
-                        <td>
-                            <?php echo $character->attaque ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Défense :</td>
-                        <td>
-                            <?php echo $character->defense ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Critique :</td>
-                        <td>
-                            <?php echo $character->critique ?>%</td>
-                    </tr>
-                </table>
+            <div id="menu">
+                <h1 class="logo">MiniBoys</h1>
+                <a href="php/delete.php" class=" btn-default btn off ">deconnection</a>
+            </div>
+            <div id="statsChar " class="col-lg-3 col-md-8 col-sm-8 m-2 box">
+                <h2>Stats</h2>
+                   <div class="statsItem">
+                        <h3>Niveau : <span> <?php echo $character->level ?></span></h3>
+                    </div>
+                    <div class="statsItem">
+                        <h3>Vie : <span> <?php echo  $character->vie ?></span></h3>
+                    </div>
+                    <div class="statsItem">
+                        <h3>Attaque : <span> <?php echo $character->attaque ?></span></h3>
+                    </div>
+                    <div class="statsItem">
+                        <h3>Défense : <span> <?php echo $character->defense ?></span></h3>
+                    </div>
+                    <div class="statsItem">
+                        <h3>Critique : <span> <?php echo  $character->critique ?>%</span></h3>
+                    </div>
             </div>
 
-            <div id="vueChar" class="col-md-5 m-2 box" align="center ">
+            <div id="vueChar" class="col-lg-5 col-md-8 col-sm-8 m-2 box" align="center ">
                 <h2>
                     <?php echo $user->username ?>
                 </h2>
-                <img src="img/aut.jpg" alt="Une belle autruche">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-3 characterCell characterHead"></div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-5 characterCell characterLeftArm"></div>
+                    <div class="col-lg-2 characterCell characterBody"></div>
+                    <div class="col-lg-5 characterCell characterRightArm"></div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 characterCell characterLeftLeg"></div>
+                    <div class="col-lg-6 characterCell characterRightLeg"></div>
+                </div>
             </div>
 
-            <div id="inventory" class="col-md-3 m-2 box">
-                <h2>Inventaire :</h2>
-                <div class="row">
-                    <div id="red" class="col-md-4"></div>
-                    <div id="blue" class="col-md-4"></div>
-                    <div id="green" class="col-md-4"></div>
-                    <div id="yellow" class="col-md-4"></div>
+            <div id="inventory" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
+                <h2>Inventaire</h2>
+                <div class="row d-flex justify-content-center">
+                    <div id="itemCell1" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell2" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell3" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell4" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell5" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell6" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell7" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell8" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell9" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell10" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell11" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell12" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell13" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell14" class="col-lg-3 itemCell m-1"></div>
+                    <div id="itemCell15" class="col-lg-3 itemCell m-1"></div>
+
                 </div>
 
             </div>

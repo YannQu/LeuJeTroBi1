@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `personnage` (
 --
 
 INSERT INTO `personnage` (`id_personnage`, `type_personnage`, `nb_xp`, `level`, `attaque`, `defense`, `vie`, `critique`, `id_utilisateur`) VALUES
-(1, 0, 0, 1, 0, 10, 0, 100, 1, 1);
+(1, 0, 0, 1, 10, 0, 100, 1, 1);
 
 -- --------------------------------------------------------
 

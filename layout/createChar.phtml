@@ -1,0 +1,45 @@
+<?php
+require 'php/createChar.php';
+?>
+
+<div  class="">
+    <h2>Création du personnage</h2>
+    <form method="post" align="center">
+        <div class="row">
+            <div class="col-md-6">
+                <p>Image du perso</p>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Sexe :</label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="sexeRadios1" name="sexeRadios" class="custom-control-input" value="0" checked>
+                      <label class="custom-control-label" for="sexeRadios1">Masculin</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="sexeRadios2" name="sexeRadios" class="custom-control-input" value="1">
+                      <label class="custom-control-label" for="sexeRadios2">Féminin</label>
+                    </div>
+                    <!--<input class="form-check-input" type="radio" name="sexeRadios" id="sexeRadios1" value="M" checked>
+                    <input class="form-check-input" type="radio" name="sexeRadios" id="sexeRadios2" value="F">-->
+                </div>
+                <div class="form-group">
+                    <label>Classe :</label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="classeRadios1" name="classeRadios" class="custom-control-input" value="0" checked>
+                      <label class="custom-control-label" for="classeRadios1">Guerrier</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="classeRadios2" name="classeRadios" class="custom-control-input" value="1">
+                      <label class="custom-control-label" for="classeRadios2">Archer</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="classeRadios3" name="classeRadios" class="custom-control-input" value="2">
+                      <label class="custom-control-label" for="classeRadios3">Mage</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn">Valider mon personnage</button>
+    </form>
+</div>

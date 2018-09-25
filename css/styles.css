@@ -25,10 +25,10 @@ html {
 .logo {
     font-weight: bold;
     text-shadow: 0 1px 0 #ccc,
-        0 2px 0 #c9c9c9,
-        0 3px 0 #bbb,
-        0 4px 0 #b9b9b9,
-        0 5px 0 #aaa,
+        0 1px 0 #c9c9c9,
+        0 1px 0 #bbb,
+        0 2px 0 #b9b9b9,
+        0 3px 0 #aaa,
         0 6px 1px rgba(0, 0, 0, .1),
         0 0 5px rgba(0, 0, 0, .1),
         0 1px 3px rgba(0, 0, 0, .3),
@@ -83,6 +83,7 @@ label {
 }
 
 h2 {
+    text-align: center;
     font-weight: bold;
 }
 
@@ -261,7 +262,7 @@ a:hover {
 }
 
 .characterImg {
-    width: 30vw;
+    width: 20vw;
     height: auto;
 }
 
@@ -333,9 +334,10 @@ a:hover {
     font-size: 20px;
     padding-top: 10px;
     padding-left: 10px;
-    color: #674624;
+    color: #af753b;
     text-shadow: none;
 }
+
 
 .overlay {
     opacity: 0;
@@ -343,4 +345,22 @@ a:hover {
 
 .overlay:hover {
     opacity: 1;
+/*create char*/
+#createChar{
+    min-height: 100vh;
+    background-image: url(../img/backgroundLeaves.jpg);
+    background-size: cover;
+}
+#createChar{
+    color: white;
+}
+#createChar form{
+    color: white;
+}
+.characterChoice{
+    padding-top: 30px;
+}
+.form-group{
+    padding-top: 15px;
+    margin-bottom: 0px;
 }

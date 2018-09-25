@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 24 sep. 2018 à 11:51
+-- Généré le :  mar. 25 sep. 2018 à 09:02
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -80,6 +80,7 @@ INSERT INTO `ennemi` (`id_ennemi`, `nom`, `attaque`, `defense`, `vie`, `critique
 DROP TABLE IF EXISTS `equipement`;
 CREATE TABLE IF NOT EXISTS `equipement` (
   `id_equipement` int(11) NOT NULL AUTO_INCREMENT,
+  `type_equipement` int(11) NOT NULL DEFAULT '0',
   `nom_equipement` varchar(200) NOT NULL,
   `attaque` int(11) NOT NULL,
   `defense` int(11) NOT NULL,
@@ -95,8 +96,8 @@ CREATE TABLE IF NOT EXISTS `equipement` (
 -- Déchargement des données de la table `equipement`
 --
 
-INSERT INTO `equipement` (`id_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`) VALUES
-(1, 'épée coccinelle', 2, 0, 0, 0, 1, 50);
+INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`) VALUES
+(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -123,6 +124,7 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
 DROP TABLE IF EXISTS `personnage`;
 CREATE TABLE IF NOT EXISTS `personnage` (
   `id_personnage` int(11) NOT NULL AUTO_INCREMENT,
+  `type_personnage` int(11) NOT NULL DEFAULT '0' COMMENT '0=guerrier 1=archer 2=mage',
   `nb_xp` int(11) NOT NULL,
   `level` int(11) NOT NULL,
   `sexe` int(11) NOT NULL,
@@ -133,7 +135,14 @@ CREATE TABLE IF NOT EXISTS `personnage` (
   `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id_personnage`),
   UNIQUE KEY `personnage_utilisateur0_AK` (`id_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `personnage`
+--
+
+INSERT INTO `personnage` (`id_personnage`, `type_personnage`, `nb_xp`, `level`, `sexe`, `attaque`, `defense`, `vie`, `critique`, `id_utilisateur`) VALUES
+(1, 0, 0, 1, 0, 10, 0, 100, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -149,10 +158,17 @@ CREATE TABLE IF NOT EXISTS `relation_equipement_campagne` (
   KEY `relation_equipement_campagne_equipement1_FK` (`id_equipement`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `relation_equipement_campagne`
+--
+
+INSERT INTO `relation_equipement_campagne` (`id_campagne`, `id_equipement`) VALUES
+(1, 1);
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Structure de la table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -163,7 +179,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id_utilisateur`),
   UNIQUE KEY `utilisateur_AK0` (`username`,`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id_utilisateur`, `password`, `username`, `email`) VALUES
+(1, '$2y$10$/2NOx4URhkQIYyxG7WcrUej/fXt7srgJQMzCnX0Xsqcj3JMWof7I2', 'jojo', 'jojo@jojo.jojo');
 
 --
 -- Contraintes pour les tables déchargées
@@ -194,7 +217,7 @@ ALTER TABLE `personnage`
 ALTER TABLE `relation_equipement_campagne`
   ADD CONSTRAINT `relation_equipement_campagne_campagne0_FK` FOREIGN KEY (`id_campagne`) REFERENCES `campagne` (`id_campagne`),
   ADD CONSTRAINT `relation_equipement_campagne_equipement1_FK` FOREIGN KEY (`id_equipement`) REFERENCES `equipement` (`id_equipement`);
-
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -232,6 +232,9 @@ input[type="text"] {
     background-size: cover;
 }
 
+#menu .btn{
+    margin: 0;
+}
 .off {
     position: absolute;
     right: 0;

@@ -9,5 +9,6 @@ if ($param == 'yes') {
 }else{
 	$template = 'character';
 }
+$template='game';
 include 'layout/layout.phtml';
 

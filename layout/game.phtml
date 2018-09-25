@@ -65,6 +65,12 @@ var_dump($equipement);*/
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
+    function endGame(end_game)
+    {
+        var id_manche = <?php echo $manche->id_manche?>;
+        window.location.replace('Co.php');
+    }
+
     function bataille(type_j)
     {
         var type = ['pierre', 'feuille', 'ciseau'];
@@ -77,26 +83,38 @@ var_dump($equipement);*/
         {
             rslt = 0;
             div_txt.innerHTML += "Egaliter !</br>";
-            perso.goAttaque(ennemi, 1, div_txt);
-            ennemi.goAttaque(perso, 1, div_txt);
+            if (perso.goAttaque(ennemi, 1, div_txt) == false)
+            {
+                endGame(1);
+            }
+            if (ennemi.goAttaque(perso, 1, div_txt) == false)
+            {
+                endGame(0);
+            }
         }
         else if ((type_e + 1) % 3 == type_j)
         {
             rslt = 1;
             div_txt.innerHTML += "Vous avez gagné !</br>";
-            perso.goAttaque(ennemi, 2, div_txt);
+            if (perso.goAttaque(ennemi, 2, div_txt) == false)
+            {
+                endGame(1);
+            }
         }
         else
         {
             rslt = 2;
             div_txt.innerHTML += "Vous avez perdu !</br>";
-            ennemi.goAttaque(perso, 2, div_txt);
+            if (ennemi.goAttaque(perso, 2, div_txt) == false)
+            {
+                endGame(0);
+            }
         }
     }
 </script>
 
-<div>Vie du joueur : <span id="vie_joueur"><?php echo $character->vie ?> <span>/<?php echo $character->vie ?> </div>
-<div>Vie de l'ennemi : <span id="vie_ennemi"><?php echo $ennemi->vie ?> <span>/<?php echo $ennemi->vie ?> </div>
+<div>Vie du joueur : <span id="vie_joueur"><?php echo $character->vie ?> </span>/<?php echo $character->vie ?> </div>
+<div>Vie de l'ennemi : <span id="vie_ennemi"><?php echo $ennemi->vie ?> </span>/<?php echo $ennemi->vie ?> </div>
 <div id='txt_bataille'>
 </div>
 <button onclick="bataille(0);">Pierre</button>

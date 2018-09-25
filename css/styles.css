@@ -12,12 +12,50 @@ html {
     box-sizing: border-box;
 }
 
+#menu {
+    height: 10vh;
+    background-color: #714518;
+    border-bottom: 5px solid #4c3012;
+    width: 100%;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.logo {
+    font-weight: bold;
+    text-shadow: 0 1px 0 #ccc,
+        0 2px 0 #c9c9c9,
+        0 3px 0 #bbb,
+        0 4px 0 #b9b9b9,
+        0 5px 0 #aaa,
+        0 6px 1px rgba(0, 0, 0, .1),
+        0 0 5px rgba(0, 0, 0, .1),
+        0 1px 3px rgba(0, 0, 0, .3),
+        0 3px 5px rgba(0, 0, 0, .2),
+        0 5px 10px rgba(0, 0, 0, .25),
+        0 10px 10px rgba(0, 0, 0, .2),
+        0 20px 20px rgba(0, 0, 0, .15);
+    padding: 10px;
+    margin: 0px;
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+    background-color: transparent;
+    margin: 0px;
+    position: absolute;
+    left: 10px;
+    top: 0;
+    padding-top: 5px;
+}
+
 #home {
     background-image: url(../img/background.jpg);
     background-size: cover;
     background-color: black;
-    height: 100vh;
+    min-height: 100vh;
 }
+
 
 .connexionContainer {
     margin-top: 12vh;
@@ -28,7 +66,7 @@ html {
     background-color: #e3cb8f;
     position: relative;
     border-bottom: 10px solid #b79e60;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .tab-content {
@@ -42,6 +80,10 @@ label {
     text-align: center;
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
     color: #805b04;
+}
+
+h2 {
+    font-weight: bold;
 }
 
 .tab-content > .active {}
@@ -182,9 +224,28 @@ input[type="text"] {
 }
 
 #character {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
     background-blend-mode: multiply, multiply;
-    height: 100vh;
+    min-height: 100vh;
+    background-image: url(../img/backgroundLeaves.jpg);
+    background-size: cover;
+}
+
+.off {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 14px;
+}
+
+a:hover {
+    color: #60a20b;
+}
+
+#character h2 {
+    text-align: center;
+    font-weight: bold;
+    color: #d2b46a;
 }
 
 .box {
@@ -194,7 +255,84 @@ input[type="text"] {
     padding-top: 0px;
     background-color: #e3cb8f;
     border-bottom: 10px solid #b79e60;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     color: #805b04;
     height: auto;
+}
+
+.characterImg {
+    width: 30vw;
+    height: auto;
+}
+
+.itemCell {
+    height: 50px;
+    background-color: #d8bd7b;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#itemCell1 {
+    background-image: url(../img/3_shield_.png);
+
+}
+
+#itemCell2 {
+    background-image: url(../img/3_head_.png);
+
+}
+
+.characterCell {
+    height: 50px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 20px;
+}
+
+.characterHead {
+    background-image: url(../img/1_head_.png);
+
+}
+
+.characterLeftArm {
+    background-image: url(../img/1_left%20arm_.png);
+    background-position: right;
+}
+
+.characterBody {
+    background-image: url(../img/1_body_.png);
+}
+
+.characterRightArm {
+    background-image: url(../img/1_left%20arm_.png);
+    background-position: left;
+}
+
+.characterLeftLeg {
+    background-image: url(../img/1_left%20lag_.png);
+     background-position: right;
+}
+
+.characterRightLeg {
+    background-image: url(../img/1_right%20lag_.png);
+     background-position: left;
+}
+
+.statsItem {
+    background-image: url(../img/woodBar.png);
+    background-size: cover;
+    width: 225px;
+    height: 50px;
+    text-align: left;
+    margin: auto;
+}
+
+.statsItem h3 {
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: #674624;
+    text-shadow: none;
 }

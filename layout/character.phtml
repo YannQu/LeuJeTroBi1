@@ -3,47 +3,61 @@ require 'php/getCharacter.php';
 ?>
 
 <a href="php/delete.php" class="off">deconnection</a>
-<div class="row">
-	<div id="statsChar" class="col-md-3">
-		<h2>Stats :</h2>
-		<table>
-			<tr>
-				<td>Niveau :</td>
-				<td><?php echo $character->level ?></td>
-			</tr>
-			<tr>
-				<td>Vie :</td>
-				<td><?php echo $character->vie ?></td>
-			</tr>
-			<tr>
-				<td>Attaque :</td>
-				<td><?php echo $character->attaque ?></td>
-			</tr>
-			<tr>
-				<td>Défence :</td>
-				<td><?php echo $character->defense ?></td>
-			</tr>
-			<tr>
-				<td>Critique :</td>
-				<td><?php echo $character->critique ?>%</td>
-			</tr>
-		</table>
-	</div>
+<div  class="row">
+    <div  id="character" class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div id="statsChar " class="col-md-3 m-2 box">
+                <h2>Stats :</h2>
+                <table>
+                    <tr>
+                        <td>Niveau :</td>
+                        <td>
+                            <?php echo $character->level ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vie :</td>
+                        <td>
+                            <?php echo $character->vie ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Attaque :</td>
+                        <td>
+                            <?php echo $character->attaque ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Défense :</td>
+                        <td>
+                            <?php echo $character->defense ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Critique :</td>
+                        <td>
+                            <?php echo $character->critique ?>%</td>
+                    </tr>
+                </table>
+            </div>
 
-	<div id="vueChar" class="col-md-6" align="center">
-		<h2><?php echo $user->username ?></h2>
-		<img src="img/aut.jpg" alt="Une belle autruche">
-	</div>
+            <div id="vueChar" class="col-md-5 m-2 box" align="center ">
+                <h2>
+                    <?php echo $user->username ?>
+                </h2>
+                <img src="img/aut.jpg" alt="Une belle autruche">
+            </div>
 
-	<div id="inventory" class="col-md-3">
-		<h2>Inventaire :</h2>
-		<div class="row">
-			<div id="red" class="col-md-4"></div>
-			<div id="blue" class="col-md-4"></div>
-			<div id="green" class="col-md-4"></div>
-			<div id="yellow" class="col-md-4"></div>
-		</div>
-			
-	</div>
+            <div id="inventory" class="col-md-3 m-2 box">
+                <h2>Inventaire :</h2>
+                <div class="row">
+                    <div id="red" class="col-md-4"></div>
+                    <div id="blue" class="col-md-4"></div>
+                    <div id="green" class="col-md-4"></div>
+                    <div id="yellow" class="col-md-4"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
-	

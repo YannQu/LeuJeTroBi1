@@ -274,16 +274,6 @@ a:hover {
     background-repeat: no-repeat;
 }
 
-#itemCell1 {
-    background-image: url(../img/3_shield_.png);
-
-}
-
-#itemCell2 {
-    background-image: url(../img/3_head_.png);
-
-}
-
 .characterCell {
     height: 50px;
     background-position: center;

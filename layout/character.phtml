@@ -56,7 +56,7 @@ require 'php/getCharacter.php';
                 <h2>Inventaire</h2>
                 <div class="row d-flex justify-content-center">
                     <?php foreach ($detailsInv as $i){ ?>
-                    <div id="itemCell<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1"> </div>
+                    <div id="itemCell<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1"><img src="img/<?php echo  $i->img ?>"> </div>
                     <div id="overlay<?php echo  $cmpt ?>" class="overlay">
                         <h5><?php echo  $i->nom_equipement ?></h5>
                         <table>

@@ -280,35 +280,7 @@ a:hover {
     background-size: contain;
     background-repeat: no-repeat;
     margin-top: 20px;
-}
-
-.characterHead {
-    background-image: url(../img/1_head_.png);
-
-}
-
-.characterLeftArm {
-    background-image: url(../img/1_left%20arm_.png);
-    background-position: right;
-}
-
-.characterBody {
-    background-image: url(../img/1_body_.png);
-}
-
-.characterRightArm {
-    background-image: url(../img/1_left%20arm_.png);
-    background-position: left;
-}
-
-.characterLeftLeg {
-    background-image: url(../img/1_left%20lag_.png);
-     background-position: right;
-}
-
-.characterRightLeg {
-    background-image: url(../img/1_right%20lag_.png);
-     background-position: left;
+   background-color: #d8bd7b;
 }
 
 .statsItem {

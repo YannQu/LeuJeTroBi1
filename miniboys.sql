@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 25 sep. 2018 à 09:02
+-- Généré le :  mar. 25 sep. 2018 à 13:51
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `ennemi` (
 --
 
 INSERT INTO `ennemi` (`id_ennemi`, `nom`, `attaque`, `defense`, `vie`, `critique`) VALUES
-(1, 'coccinelle', 1, 1, 10, 1);
+(1, 'coccinelle', 5, 1, 100, 50);
 
 -- --------------------------------------------------------
 
@@ -90,14 +90,18 @@ CREATE TABLE IF NOT EXISTS `equipement` (
   `pour_loot` int(11) NOT NULL,
   PRIMARY KEY (`id_equipement`),
   UNIQUE KEY `nom_equipement` (`nom_equipement`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `equipement`
 --
 
 INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`) VALUES
-(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50);
+(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50),
+(2, 1, 'casque coccinelle', 1, 3, 5, 2, 1, 60),
+(3, 2, 'armure de coccinelle', 1, 5, 10, 5, 2, 40),
+(4, 3, 'bottes de coccinnelle', 2, 3, 20, 15, 3, 45),
+(5, 4, 'bouclier de coccinelle', 0, 10, 20, 30, 4, 25);
 
 -- --------------------------------------------------------
 
@@ -134,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `personnage` (
   `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id_personnage`),
   UNIQUE KEY `personnage_utilisateur0_AK` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `personnage`
@@ -178,14 +182,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id_utilisateur`),
   UNIQUE KEY `utilisateur_AK0` (`username`,`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id_utilisateur`, `password`, `username`, `email`) VALUES
-(1, '$2y$10$/2NOx4URhkQIYyxG7WcrUej/fXt7srgJQMzCnX0Xsqcj3JMWof7I2', 'jojo', 'jojo@jojo.jojo');
+(1, '$2y$10$/2NOx4URhkQIYyxG7WcrUej/fXt7srgJQMzCnX0Xsqcj3JMWof7I2', 'jojo', 'jojo@jojo.jojo'),
+(2, '$2y$10$MvNOOTSQdRXkIed1EGgl1.3xyDEdG//19RC1hR0VwPM9inxe/bkke', 'jojojo', 'jojo@jojojo.jo'),
+(3, '$2y$10$rf6wOCkvQaouUItykLbVp.t7tLvkcfOVFljaR4VB6VZ3MT6P.ImqW', 'jojojojo', 'jojojojoj@jocv.vv');
 
 --
 -- Contraintes pour les tables déchargées

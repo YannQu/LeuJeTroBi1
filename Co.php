@@ -1,5 +1,9 @@
 <?php
-$param = $_GET['insc'];
+$param="no";
+if (isset($_GET['insc']))
+{
+	$param = $_GET['insc'];
+}
 if ($param == 'yes') {
 	$template = 'createChar';
 }else{

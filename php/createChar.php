@@ -26,8 +26,8 @@ if(!empty($_POST)){
 	$xp = 0;
 	$crit = 0;
 
-	$req = $pdo->prepare('INSERT INTO personnage SET sexe = ?, type_personnage = ?, level = ?, nb_xp = ?, attaque = ?, defense = ?, vie = ?, critique = ?, id_utilisateur = ?');
-	$req->execute(array($_POST['sexeRadios'], $typePerso, $lvl, $xp, $att, $def, $vie, $crit, $user->id_utilisateur));
+	$req = $pdo->prepare('INSERT INTO personnage SET type_personnage = ?, level = ?, nb_xp = ?, attaque = ?, defense = ?, vie = ?, critique = ?, id_utilisateur = ?');
+	$req->execute(array($typePerso, $lvl, $xp, $att, $def, $vie, $crit, $user->id_utilisateur));
 
 	header('Location: Co.php');
 }

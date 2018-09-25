@@ -77,10 +77,12 @@ if(!empty($_POST) && $_POST['inscInp'] == 'inscription')
         $req = $pdo->prepare('SELECT * FROM users WHERE username = ?');
         $req->execute(array($_POST['username']));
         $user = $req->fetch(PDO::FETCH_OBJ);
+
+        session_start();
         $_SESSION['auth'] = $user;
         $errors['success'] = true;
         header('Location: Co.php?insc=yes');
-        //exit();
+        exit();
 
 
     }

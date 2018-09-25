@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 25 sep. 2018 à 13:51
+-- Généré le :  mar. 25 sep. 2018 à 09:02
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `ennemi` (
 --
 
 INSERT INTO `ennemi` (`id_ennemi`, `nom`, `attaque`, `defense`, `vie`, `critique`) VALUES
-(1, 'coccinelle', 5, 1, 100, 50);
+(1, 'coccinelle', 5, 1, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `equipement` (
   `pour_loot` int(11) NOT NULL,
   PRIMARY KEY (`id_equipement`),
   UNIQUE KEY `nom_equipement` (`nom_equipement`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `equipement`
@@ -119,6 +119,13 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
   KEY `inventaire_equipement1_FK` (`id_equipement`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `inventaire` (`id_inventaire`, `id_personnage`, `id_equipement`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 1, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -138,14 +145,14 @@ CREATE TABLE IF NOT EXISTS `personnage` (
   `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id_personnage`),
   UNIQUE KEY `personnage_utilisateur0_AK` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `personnage`
 --
 
 INSERT INTO `personnage` (`id_personnage`, `type_personnage`, `nb_xp`, `level`, `attaque`, `defense`, `vie`, `critique`, `id_utilisateur`) VALUES
-(1, 0, 0, 1, 0, 10, 0, 100, 1, 1);
+(1, 0, 0, 1, 10, 0, 100, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -182,16 +189,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id_utilisateur`),
   UNIQUE KEY `utilisateur_AK0` (`username`,`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id_utilisateur`, `password`, `username`, `email`) VALUES
-(1, '$2y$10$/2NOx4URhkQIYyxG7WcrUej/fXt7srgJQMzCnX0Xsqcj3JMWof7I2', 'jojo', 'jojo@jojo.jojo'),
-(2, '$2y$10$MvNOOTSQdRXkIed1EGgl1.3xyDEdG//19RC1hR0VwPM9inxe/bkke', 'jojojo', 'jojo@jojojo.jo'),
-(3, '$2y$10$rf6wOCkvQaouUItykLbVp.t7tLvkcfOVFljaR4VB6VZ3MT6P.ImqW', 'jojojojo', 'jojojojoj@jocv.vv');
+(1, '$2y$10$Ti2ugPnj2/VW6CHvMBhOmeTk2iynTMqCeLKK2kK1FXV6E.SogOL82', 'test', 't@t.t');
 
 --
 -- Contraintes pour les tables déchargées

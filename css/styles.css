@@ -345,6 +345,7 @@ a:hover {
 
 .overlay:hover {
     opacity: 1;
+}
 /*create char*/
 #createChar{
     min-height: 100vh;

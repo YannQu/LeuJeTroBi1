@@ -127,7 +127,6 @@ CREATE TABLE IF NOT EXISTS `personnage` (
   `type_personnage` int(11) NOT NULL DEFAULT '0' COMMENT '0=guerrier 1=archer 2=mage',
   `nb_xp` int(11) NOT NULL,
   `level` int(11) NOT NULL,
-  `sexe` int(11) NOT NULL,
   `attaque` int(11) NOT NULL,
   `defense` int(11) NOT NULL,
   `vie` int(11) NOT NULL,
@@ -141,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `personnage` (
 -- Déchargement des données de la table `personnage`
 --
 
-INSERT INTO `personnage` (`id_personnage`, `type_personnage`, `nb_xp`, `level`, `sexe`, `attaque`, `defense`, `vie`, `critique`, `id_utilisateur`) VALUES
+INSERT INTO `personnage` (`id_personnage`, `type_personnage`, `nb_xp`, `level`, `attaque`, `defense`, `vie`, `critique`, `id_utilisateur`) VALUES
 (1, 0, 0, 1, 0, 10, 0, 100, 1, 1);
 
 -- --------------------------------------------------------

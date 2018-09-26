@@ -225,7 +225,7 @@ input[type="text"] {
 }
 
 #character,
-#game {
+#game,#endGame {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
     background-blend-mode: multiply, multiply;
     min-height: 100vh;
@@ -552,4 +552,24 @@ a:hover {
 
 .apply-shake {
     animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+/*endgame*/
+
+.endGameTitle{
+    font-size: 50px;
+    color: white;
+    margin-bottom: 150px;
+}
+.win{
+    width: auto;
+    height: 220px;
+    margin-top: -185px;
+    background-image: url(../img/win.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#inventoryDrop{
+    display: none;
 }

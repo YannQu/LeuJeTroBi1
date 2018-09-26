@@ -176,7 +176,12 @@ var_dump($equipement);*/
     </div>
 
 </div>
-<script>
+<audio id="my_audio" src="sound/battle.mp3" autoplay="true"></audio>
+<script type="text/javascript">
+        $(document).ready(function() {
+            $("#my_audio").get(0).play();
+        });
+
     function autoScrollOnclickBtn() {
         $(".battleBtn").click(function() {
             var scrollDimension = $("#txt_bataille")[0].scrollHeight;

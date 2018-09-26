@@ -42,9 +42,9 @@ require 'php/getCharacter.php';
                     <div id="helmet" class="col-lg-2 characterCell characterHead"></div>
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <div id="shield" class="col-lg-2 characterCell m-2 characterLeftArm"></div>
+                    <div id="sword" class="col-lg-2 characterCell m-2 characterLeftArm"></div>
                     <div id="armour" class="col-lg-2 characterCell m-2 characterBody"></div>
-                    <div id="sword" class="col-lg-2 characterCell m-2 characterRightArm"></div>
+                    <div id="shield" class="col-lg-2 characterCell m-2 characterRightArm"></div>
                 </div>
                 <div class="row d-flex justify-content-center">
                     <div id="boots" class="col-lg-2 characterCell m-2 characterLeg"></div>
@@ -55,7 +55,7 @@ require 'php/getCharacter.php';
                 <h2>Inventaire</h2>
                 <div class="row d-flex justify-content-center">
                     <?php foreach ($detailsInv as $i){ ?>
-                    <div data-item="<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1">
+                    <div class="col-lg-3 itemCell m-1" data-item="<?php echo $i->type_equipement ?>" data-level="<?php echo $i->level_min ?>" data-attaque="<?php echo $i->attaque ?>" data-defense="<?php echo $i->defense ?>" data-critique="<?php echo $i->critique ?>" data-vie="<?php echo $i->vie ?>">
                         <img class="itemImg" src="img/<?php echo  $i->img ?>">
                         <div id="overlay<?php echo  $cmpt ?>" class="overlay">
                             <div>
@@ -69,28 +69,24 @@ require 'php/getCharacter.php';
                                             <?php echo  $i->level_min ?></span></h3>
                                 </div>
                                 <div>
-                                    <h3>Attaque :
-                                        <?php echo  $i->attaque ?>
-                                    </h3>
+                                    <h3>Attaque : <span id="persoAtt">
+                                        <?php echo  $i->attaque ?></span></h3>
                                 </div>
                                 <div>
                                     <h3>Defense : <span>
                                             <?php echo  $i->defense ?></span></h3>
                                 </div>
                                 <div>
-                                    <h3>Critique :
-                                        <?php echo  $i->critique ?>
-                                    </h3>
+                                    <h3>Critique : <span>
+                                        <?php echo  $i->critique ?></span></h3>
                                 </div>
                                 <div>
-                                    <h3>Vie :
-                                        <?php echo  $i->vie ?>
-                                    </h3>
+                                    <h3>Vie : <span>
+                                        <?php echo  $i->vie ?></span></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <?php $cmpt += 1; } ?>
                 </div>
 
@@ -110,28 +106,53 @@ require 'php/getCharacter.php';
     }
 
     function addItem() {
+        var character = <?php echo json_encode($character, JSON_FORCE_OBJECT) ?>;
+        //console.log(character); 
         $(".itemCell").click(function() {
             var item = $(this);
             var itemType = $(this).data("item");
-            if (itemType == 0) {
+            var att = $(this).data("attaque");
+            var def = $(this).data("defense");
+            var crit = $(this).data("critique");
+            var lvl = $(this).data("level");
+            var vie = $(this).data("vie");
+            if (itemType == 0 && lvl <= character.level) {
                 $("#sword").append(item);
+                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
             }
-            if (itemType == 1) {
+            if (itemType == 1 && lvl <= character.level) {
                 $("#helmet").append(item);
-               
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
             }
-            if (itemType == 2) {
+            if (itemType == 2 && lvl <= character.level) {
                 $("#armour").append(item);
-               
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
             }
-            if (itemType == 3) {
+            if (itemType == 3 && lvl <= character.level) {
                 $("#boots").append(item);
-               
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
             }
-            if (itemType == 4) {
+            if (itemType == 4 && lvl <= character.level) {
                 $("#shield").append(item);
-               
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
             }
+            //console.log(character); 
         });
     }
     function removeItem(){
@@ -144,5 +165,5 @@ require 'php/getCharacter.php';
     }
     removeItem();
     addItem();
-    showOverlay();
+    showOverlay();  
 </script>

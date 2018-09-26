@@ -49,7 +49,6 @@ var_dump($equipement);*/
             var span_vie = document.getElementById(this.span_vie);
             span_vie.innerHTML = this.current_vie;
         }
-
     }
     var perso = new Personnage("vie_joueur", "<?php echo $user->username ; ?>", <?php echo $character->vie ; ?>, <?php echo $character->attaque ; ?>, <?php echo $character->defense ; ?>, <?php echo $character->critique; ?>);
     var ennemi = new Personnage("vie_ennemi", "<?php echo $ennemi->nom ; ?>", <?php echo $ennemi->vie ; ?>, <?php echo $ennemi->attaque ; ?>, <?php echo $ennemi->defense ; ?>, <?php echo $ennemi->critique; ?>);
@@ -61,11 +60,13 @@ var_dump($equipement);*/
     }
 
     function bataille(type_j) {
-        var type = ['pierre', 'feuille', 'ciseau'];
+        var type = ['pierre', 'feuille', 'ciseaux'];
         var type_e = getRandomInt(3);
         var div_txt = document.getElementById("txt_bataille");
         div_txt.innerHTML += "Vous avez fait " + type[type_j] + "</br>";
         div_txt.innerHTML += "Votre ennemi a fait " + type[type_e] + "</br>";
+        $("#playerAttack").attr("src","img/"+type[type_j]+".png");
+        $("#enemiAttack").attr("src","img/"+type[type_e]+".png");
         var rslt;
         if (type_e == type_j) {
             rslt = 0;
@@ -81,6 +82,7 @@ var_dump($equipement);*/
             div_txt.innerHTML += "Vous avez perdu !</br>";
             ennemi.goAttaque(perso, 2, div_txt);
         }
+        
     }
 </script>
 <div class="row">
@@ -89,8 +91,8 @@ var_dump($equipement);*/
         <div class="row d-flex justify-content-center">
             <div class="col-lg-3 m-2 platform leftPlatform">
                 <div class="lifeContainer">
-                    <div class="lifeBar">
-                        <div class="lifePoint"><span id="vie_joueur">
+                    <div class="lifeBar playerLifeBar">
+                        <div class="lifePoint "><span id="vie_joueur">
                                 <?php echo $character->vie ?> </span>/
                             <?php echo $character->vie ?>
                         </div>
@@ -99,12 +101,20 @@ var_dump($equipement);*/
                 <img class="battleCharacter" src="/MiniBoys/img/guerrier.png" alt="">
                 <img class="platformImg" src="/MiniBoys/img/platformGreen.png" alt="">
             </div>
-            <div class="col-lg-2  m-2 vs">
-                <img class="img-fluid" src="/MiniBoys/img/vs.png" alt="">
+            <div class="col-lg-2  m-2 vs d-flex justify-content-center align-items-center">
+               <div class="attack">
+                   <img id="playerAttack" class="img-fluid" src="" alt="">
+               </div>
+                <div class="attack">
+                    <img class="img-fluid" src="img/vs.png" alt="">
+                </div>
+                <div class="attack">
+                    <img id="enemiAttack" class="img-fluid" src="" alt="">
+                </div>
             </div>
             <div class="col-lg-3 m-2 platform rightPlatfrom">
                 <div class="lifeContainer">
-                    <div class="lifeBar">
+                    <div class="lifeBar enemiLifeBar">
                         <div class="lifePoint"> <span id="vie_ennemi">
                                 <?php echo $ennemi->vie ?> </span>/
                             <?php echo $ennemi->vie ?>
@@ -115,14 +125,34 @@ var_dump($equipement);*/
                 <img class="platformImg" src="/MiniBoys/img/platformGreen.png" alt="">
             </div>
         </div>
-        <div class="row">
+        <div class="row fixed-bottom txtBattleContainer">
+            <div class="battleBtnContainer d-flex justify-content-center">
+                <button id="rock" class="battleBtn" onclick="bataille(0);"></button>
+                <button id="leaf" class="battleBtn" onclick="bataille(1);"></button>
+                <button id="scissor" class="battleBtn" onclick="bataille(2);"></button>
+            </div>
             <div id='txt_bataille'>
-                <button onclick="bataille(0);">Pierre</button>
-                <button onclick="bataille(1);">Feuille</button>
-                <button onclick="bataille(2);">Ciseau</button>
 
             </div>
         </div>
     </div>
 
 </div>
+<script>
+    function autoScrollOnclickBtn() {
+        $(".battleBtn").click(function() {
+            var scrollDimension = $("#txt_bataille")[0].scrollHeight;
+            console.log(scrollDimension);
+            $("#txt_bataille").scrollTop(scrollDimension);
+        });
+    }
+
+    function animateLifeBar() {
+        $(".battleBtn").click(function() {
+            $(".playerLifeBar").animate({width: perso.current_vie+'%'});
+            $(".enemiLifeBar").animate({width: ennemi.current_vie+'%'});
+        });
+    }
+    autoScrollOnclickBtn();
+    animateLifeBar();
+</script>

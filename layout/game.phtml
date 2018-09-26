@@ -72,6 +72,8 @@ var_dump($equipement);*/
         div_txt.innerHTML += "Votre ennemi a fait " + type[type_e] + "</br>";
         $("#playerAttack").attr("src","img/"+type[type_j]+".png");
         $("#enemiAttack").attr("src","img/"+type[type_e]+".png");
+        $("#enemyCharacter").removeClass("apply-shake");
+        $("#playerCharacter").removeClass("apply-shake");
         var rslt;
         if (type_e == type_j) {
             rslt = 0;
@@ -89,6 +91,8 @@ var_dump($equipement);*/
         {
             rslt = 1;
             div_txt.innerHTML += "Vous avez gagné !</br>";
+            $("#enemyCharacter").addClass("apply-shake");
+            
             if (perso.goAttaque(ennemi, 2, div_txt) == false)
             {
                 endGame(1);
@@ -98,6 +102,8 @@ var_dump($equipement);*/
         {
             rslt = 2;
             div_txt.innerHTML += "Vous avez perdu !</br>";
+            $("#playerCharacter").addClass("apply-shake");
+            
             if (ennemi.goAttaque(perso, 2, div_txt) == false)
             {
                 endGame(0);
@@ -119,14 +125,19 @@ var_dump($equipement);*/
                         </div>
                     </div>
                 </div>
-                <img class="battleCharacter" src="/MiniBoys/img/guerrier.png" alt="">
+                <img id="playerCharacter" class="battleCharacter" src="/MiniBoys/img/guerrier.png" alt="">
                 <img class="platformImg" src="/MiniBoys/img/platformGreen.png" alt="">
+                <div class="row d-flex justify-content-center align-items-center inGameStatsContainer">
+                    <div class="col-4 inGameStats">Lvl :  <?php echo $character->level ?>  </div>
+                    <div class="col-4 inGameStats">Attaque : <?php echo $character->attaque ?>  </div>
+                    <div class="col-4 inGameStats">Défense :  <?php echo $character->defense ?></div>
+                </div>
             </div>
             <div class="col-lg-2  m-2 vs d-flex justify-content-center align-items-center">
                <div class="attack">
                    <img id="playerAttack" class="img-fluid" src="" alt="">
                </div>
-                <div class="attack">
+                <div class="attack vsIcon">
                     <img class="img-fluid" src="img/vs.png" alt="">
                 </div>
                 <div class="attack">
@@ -142,12 +153,18 @@ var_dump($equipement);*/
                         </div>
                     </div>
                 </div>
-                <img class="battleCharacter" src="/MiniBoys/img/ladybug.png" alt="">
+                <img id="enemyCharacter" class="battleCharacter" src="/MiniBoys/img/spider2.png" alt="">
                 <img class="platformImg" src="/MiniBoys/img/platformGreen.png" alt="">
+                 <div class="row d-flex justify-content-center align-items-center inGameStatsContainer">
+
+                    <div class="col-6 inGameStats">Attaque : <?php echo $ennemi->attaque ?>  </div>
+                    <div class="col-6 inGameStats">Défense :  <?php echo $ennemi->defense ?></div>
+                </div>
             </div>
         </div>
         <div class="row fixed-bottom txtBattleContainer">
-            <div class="battleBtnContainer d-flex justify-content-center">
+           
+            <div class="battleBtnContainer row d-flex justify-content-center">
                 <button id="rock" class="battleBtn" onclick="bataille(0);"></button>
                 <button id="leaf" class="battleBtn" onclick="bataille(1);"></button>
                 <button id="scissor" class="battleBtn" onclick="bataille(2);"></button>

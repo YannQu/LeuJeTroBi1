@@ -67,8 +67,8 @@ var_dump($equipement);*/
     }
     function endGame(end_game)
     {
-        var id_manche = <?php echo $manche->id_manche?>;
-        window.location.replace('Co.php');
+        var id_manche = <?php echo $manche->id_campagne?>;
+        window.location.replace('Co.php?endgame=yes&end_game=' + end_game + "&id_manche=" + id_manche);
     }
 
     function bataille(type_j)

@@ -117,6 +117,8 @@ require 'php/getCharacter.php';
             var lvl = $(this).data("level");
             var vie = $(this).data("vie");
             if (itemType == 0 && lvl <= character.level) {
+                var charItem = $("#sword").children(".itemCell");
+                $("#inventory").find(".row").append(charItem);
                 $("#sword").append(item);
                 $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
                 character.attaque = parseInt(character.attaque)+parseInt(att);
@@ -125,6 +127,8 @@ require 'php/getCharacter.php';
                 character.vie = parseInt(character.vie)+parseInt(vie);
             }
             if (itemType == 1 && lvl <= character.level) {
+                var charItem = $("#helmet").children(".itemCell");
+                $("#inventory").find(".row").append(charItem);
                 $("#helmet").append(item);
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
@@ -132,6 +136,8 @@ require 'php/getCharacter.php';
                 character.vie = parseInt(character.vie)+parseInt(vie);
             }
             if (itemType == 2 && lvl <= character.level) {
+                var charItem = $("#armour").children(".itemCell");
+                $("#inventory").find(".row").append(charItem);
                 $("#armour").append(item);
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
@@ -139,6 +145,8 @@ require 'php/getCharacter.php';
                 character.vie = parseInt(character.vie)+parseInt(vie);
             }
             if (itemType == 3 && lvl <= character.level) {
+                var charItem = $("#boots").children(".itemCell");
+                $("#inventory").find(".row").append(charItem);
                 $("#boots").append(item);
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
@@ -146,6 +154,8 @@ require 'php/getCharacter.php';
                 character.vie = parseInt(character.vie)+parseInt(vie);
             }
             if (itemType == 4 && lvl <= character.level) {
+                var charItem = $("#shield").children(".itemCell");
+                $("#inventory").find(".row").append(charItem);
                 $("#shield").append(item);
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);

@@ -97,7 +97,8 @@ require 'php/getCharacter.php';
 
 <script type="text/javascript">
 
-    var character = <?php echo json_encode($character, JSON_FORCE_OBJECT) ?>
+    var character = <?php echo json_encode($character, JSON_FORCE_OBJECT) ?>;
+    var listInv = <?php echo json_encode($detailsInv) ?>;
 
     function showOverlay() {
         $(".itemCell").hover(function() {
@@ -109,90 +110,79 @@ require 'php/getCharacter.php';
     }
 
     function addItem() {
-        
-        
         $(".itemCell").click(function() {
             var item = $(this);
             var itemType = $(this).data("item");
-            var att = $(this).data("attaque");
-            var def = $(this).data("defense");
-            var crit = $(this).data("critique");
-            var lvl = $(this).data("level");
-            var vie = $(this).data("vie");
-            if (itemType == 0 && lvl <= character.level) {
-                var charItem = $("#sword").children(".itemCell");
-                console.log(charItem)
+            var attInv = $(this).data("attaque");
+            var defInv = $(this).data("defense");
+            var critInv = $(this).data("critique");
+            var lvlInv = $(this).data("level");
+            var vieInv = $(this).data("vie");
+            if (lvlInv <= character.level) {
+                if (itemType == 0) {
+                    var charItem = $("#sword").children(".itemCell");
+                }else if(itemType == 1){
+                    var charItem = $("#helmet").children(".itemCell");
+                }else if(itemType == 2){
+                    var charItem = $("#armour").children(".itemCell");
+                }else if(itemType == 3){
+                    var charItem = $("#boots").children(".itemCell");
+                }else if(itemType == 4){
+                    var charItem = $("#shield").children(".itemCell");
+                }
+                var attPerso = charItem.data("attaque");
+                var defPerso = charItem.data("defense");
+                var critPerso = charItem.data("critique");
+                //var lvlPerso = charItem.data("level");
+                var viePerso = charItem.data("vie");
+
+
+                if (charItem.length == 1) {
+                    character.attaque = parseInt(character.attaque)+parseInt(attInv)-parseInt(attPerso);
+                    character.defense = parseInt(character.defense)+parseInt(defInv)-parseInt(defPerso);
+                    character.critique = parseInt(character.critique)+parseInt(critInv)-parseInt(critPerso);
+                    character.vie = parseInt(character.vie)+parseInt(vieInv)-parseInt(viePerso);
+                }else{
+                    character.attaque = parseInt(character.attaque)+parseInt(attInv);
+                    character.defense = parseInt(character.defense)+parseInt(defInv);
+                    character.critique = parseInt(character.critique)+parseInt(critInv);
+                    character.vie = parseInt(character.vie)+parseInt(vieInv);
+                }
                 $("#inventory").find(".row").append(charItem);
-                $("#sword").append(item);
-                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
-                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
-                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
-                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
-                character.attaque = parseInt(character.attaque)+parseInt(att);
-                character.defense = parseInt(character.defense)+parseInt(def);
-                character.critique = parseInt(character.critique)+parseInt(crit);
-                character.vie = parseInt(character.vie)+parseInt(vie);
+                if (itemType == 0) {
+                    $("#sword").append(item);
+                }else if(itemType == 1){
+                    $("#helmet").append(item);
+                }else if(itemType == 2){
+                    $("#armour").append(item);
+                }else if(itemType == 3){
+                    $("#boots").append(item);
+                }else if(itemType == 4){
+                    $("#shield").append(item);
+                }
+                $('#persoAtt').text(character.attaque);
+                $('#persoDef').text(character.defense);
+                $('#persoCrit').text(character.critique + "%");
+                $('#persoVie').text(character.vie);
             }
-            if (itemType == 1 && lvl <= character.level) {
-                var charItem = $("#helmet").children(".itemCell");
-                $("#inventory").find(".row").append(charItem);
-                $("#helmet").append(item);
-                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
-                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
-                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
-                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
-                character.attaque = parseInt(character.attaque)+parseInt(att);
-                character.defense = parseInt(character.defense)+parseInt(def);
-                character.critique = parseInt(character.critique)+parseInt(crit);
-                character.vie = parseInt(character.vie)+parseInt(vie);
-            }
-            if (itemType == 2 && lvl <= character.level) {
-                var charItem = $("#armour").children(".itemCell");
-                $("#inventory").find(".row").append(charItem);
-                $("#armour").append(item);
-                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
-                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
-                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
-                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
-                character.attaque = parseInt(character.attaque)+parseInt(att);
-                character.defense = parseInt(character.defense)+parseInt(def);
-                character.critique = parseInt(character.critique)+parseInt(crit);
-                character.vie = parseInt(character.vie)+parseInt(vie);
-            }
-            if (itemType == 3 && lvl <= character.level) {
-                var charItem = $("#boots").children(".itemCell");
-                $("#inventory").find(".row").append(charItem);
-                $("#boots").append(item);
-                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
-                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
-                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
-                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
-                character.attaque = parseInt(character.attaque)+parseInt(att);
-                character.defense = parseInt(character.defense)+parseInt(def);
-                character.critique = parseInt(character.critique)+parseInt(crit);
-                character.vie = parseInt(character.vie)+parseInt(vie);
-            }
-            if (itemType == 4 && lvl <= character.level) {
-                var charItem = $("#shield").children(".itemCell");
-                $("#inventory").find(".row").append(charItem);
-                $("#shield").append(item);
-                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
-                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
-                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
-                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
-                character.attaque = parseInt(character.attaque)+parseInt(att);
-                character.defense = parseInt(character.defense)+parseInt(def);
-                character.critique = parseInt(character.critique)+parseInt(crit);
-                character.vie = parseInt(character.vie)+parseInt(vie);
-            }
-            //console.log(character); 
         });
     }
     function removeItem(){
         $(".characterCell").click(function(){
-            console.log("click");
             var item = $(this).children(".itemCell");
-            console.log(item);
+            var attInv = item.data("attaque");
+            var defInv = item.data("defense");
+            var critInv = item.data("critique");
+            var lvlInv = item.data("level");
+            var vieInv = item.data("vie");
+            character.attaque = parseInt(character.attaque)-parseInt(attInv);
+            character.defense = parseInt(character.defense)-parseInt(defInv);
+            character.critique = parseInt(character.critique)-parseInt(critInv);
+            character.vie = parseInt(character.vie)-parseInt(vieInv);
+            $('#persoAtt').text(character.attaque);
+            $('#persoDef').text(character.defense);
+            $('#persoCrit').text(character.critique + "%");
+            $('#persoVie').text(character.vie);
             $("#inventory").find(".row").append(item);
         })
     }

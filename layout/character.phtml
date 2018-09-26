@@ -9,24 +9,29 @@ require 'php/getCharacter.php';
 
 
         <div class="row d-flex justify-content-center">
-        <?php include "header.phtml" ?>
+            <?php include "header.phtml" ?>
             <div id="statsChar " class="col-lg-3 col-md-8 col-sm-8 m-2 box">
                 <h2>Stats</h2>
-                   <div class="statsItem">
-                        <h3>Niveau : <span> <?php echo $character->level ?></span></h3>
-                    </div>
-                    <div class="statsItem">
-                        <h3>Vie : <span> <?php echo  $character->vie ?></span></h3>
-                    </div>
-                    <div class="statsItem">
-                        <h3>Attaque : <span> <?php echo $character->attaque ?></span></h3>
-                    </div>
-                    <div class="statsItem">
-                        <h3>Défense : <span> <?php echo $character->defense ?></span></h3>
-                    </div>
-                    <div class="statsItem">
-                        <h3>Critique : <span> <?php echo  $character->critique ?>%</span></h3>
-                    </div>
+                <div class="statsItem">
+                    <h3>Niveau : <span>
+                            <?php echo $character->level ?></span></h3>
+                </div>
+                <div class="statsItem">
+                    <h3 id="life" data-stats="<?php echo $character->vie ?>">Vie : <span>
+                            <?php echo  $character->vie ?></span></h3>
+                </div>
+                <div class="statsItem">
+                    <h3 id="attack" data-stats="<?php echo $character->attaque ?>">Attaque : <span>
+                            <?php echo $character->attaque ?></span></h3>
+                </div>
+                <div class="statsItem">
+                    <h3 id="defense" data-stats="<?php echo $character->defense ?>">Défense : <span>
+                            <?php echo $character->defense ?></span></h3>
+                </div>
+                <div class="statsItem">
+                    <h3 id="critic" data-stats="<?php echo $character->critique ?>">Critique : <span>
+                            <?php echo  $character->critique ?>%</span></h3>
+                </div>
             </div>
 
             <div id="vueChar" class="col-lg-5 col-md-8 col-sm-8 m-2 box" align="center ">
@@ -34,15 +39,15 @@ require 'php/getCharacter.php';
                     <?php echo $user->username ?>
                 </h2>
                 <div class="row d-flex justify-content-center">
-                    <div class="col-lg-2 characterCell characterHead"></div>
+                    <div id="helmet" class="col-lg-2 characterCell characterHead"></div>
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <div class="col-lg-2 characterCell m-2 characterLeftArm"></div>
-                    <div class="col-lg-2 characterCell m-2 characterBody"></div>
-                    <div class="col-lg-2 characterCell m-2 characterRightArm"></div>
+                    <div id="shield" class="col-lg-2 characterCell m-2 characterLeftArm"></div>
+                    <div id="armour" class="col-lg-2 characterCell m-2 characterBody"></div>
+                    <div id="sword" class="col-lg-2 characterCell m-2 characterRightArm"></div>
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <div class="col-lg-2 characterCell m-2 characterLeg"></div>
+                    <div id="boots" class="col-lg-2 characterCell m-2 characterLeg"></div>
                 </div>
             </div>
 
@@ -50,32 +55,42 @@ require 'php/getCharacter.php';
                 <h2>Inventaire</h2>
                 <div class="row d-flex justify-content-center">
                     <?php foreach ($detailsInv as $i){ ?>
-                    <div id="itemCell<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1"><img src="img/<?php echo  $i->img ?>"> </div>
-                    <div id="overlay<?php echo  $cmpt ?>" class="overlay">
-                        <h5><?php echo  $i->nom_equipement ?></h5>
-                        <table>
-                            <tr>
-                                <td>Level :</td>
-                                <td><?php echo  $i->level_min ?></td>
-                            </tr>
-                            <tr>
-                                <td>Attaque :</td>
-                                <td><?php echo  $i->attaque ?></td>
-                            </tr>
-                            <tr>
-                                <td>Defense :</td>
-                                <td><?php echo  $i->defense ?></td>
-                            </tr>
-                            <tr>
-                                <td>Critique :</td>
-                                <td><?php echo  $i->critique ?></td>
-                            </tr>
-                            <tr>
-                                <td>Vie :</td>
-                                <td><?php echo  $i->vie ?></td>
-                            </tr>
-                        </table>
+                    <div data-item="<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1">
+                        <img class="itemImg" src="img/<?php echo  $i->img ?>">
+                        <div id="overlay<?php echo  $cmpt ?>" class="overlay">
+                            <div>
+                                <h3>
+                                    <?php echo  $i->nom_equipement ?>
+                                </h3>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3>Level : <span>
+                                            <?php echo  $i->level_min ?></span></h3>
+                                </div>
+                                <div>
+                                    <h3>Attaque :
+                                        <?php echo  $i->attaque ?>
+                                    </h3>
+                                </div>
+                                <div>
+                                    <h3>Defense : <span>
+                                            <?php echo  $i->defense ?></span></h3>
+                                </div>
+                                <div>
+                                    <h3>Critique :
+                                        <?php echo  $i->critique ?>
+                                    </h3>
+                                </div>
+                                <div>
+                                    <h3>Vie :
+                                        <?php echo  $i->vie ?>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <?php $cmpt += 1; } ?>
                 </div>
 
@@ -85,7 +100,49 @@ require 'php/getCharacter.php';
 </div>
 
 <script type="text/javascript">
-    function showOverlay(index) {
-        document.getElementById("overlay"+index).style.display = "block";
+    function showOverlay() {
+        $(".itemCell").hover(function() {
+            $(this).children().show();
+        });
+        $(".itemCell").mouseleave(function() {
+            $(this).children(".overlay").hide();
+        });
     }
+
+    function addItem() {
+        $(".itemCell").click(function() {
+            var item = $(this);
+            var itemType = $(this).data("item");
+            if (itemType == 0) {
+                $("#sword").append(item);
+            }
+            if (itemType == 1) {
+                $("#helmet").append(item);
+               
+            }
+            if (itemType == 2) {
+                $("#armour").append(item);
+               
+            }
+            if (itemType == 3) {
+                $("#boots").append(item);
+               
+            }
+            if (itemType == 4) {
+                $("#shield").append(item);
+               
+            }
+        });
+    }
+    function removeItem(){
+        $(".characterCell").click(function(){
+            console.log("click");
+            var item = $(this).children(".itemCell");
+            console.log(item);
+            $("#inventory").find(".row").append(item);
+        })
+    }
+    removeItem();
+    addItem();
+    showOverlay();
 </script>

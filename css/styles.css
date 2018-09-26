@@ -241,7 +241,12 @@ input[type="text"] {
 #menu .btn {
     margin: 0;
 }
-
+.btn{
+    transition: 0.4s;
+}
+.btn:hover{
+    transition: 0.4s;
+}
 .off {
     position: absolute;
     right: 0;
@@ -285,8 +290,56 @@ a:hover {
     position: relative;
     cursor: pointer;
     min-width: 50px;
+    margin: 20px;
+    border-radius: 4px;
 }
-
+.trashableItem{
+    -webkit-animation: trashable 0.1s ease-in-out 0.1s infinite alternate;
+}
+.selectedTrashableItem{
+    animation: none;
+    background-color: red;
+}
+.trash{
+    display: inline-block;
+    cursor:pointer;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/trash.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+.trash:hover{
+    background-image: url(../img/trashHover.png);
+}
+.validate{
+    transition: 0.5s;
+    display: none;
+    cursor:pointer;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/validate.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+.validate:hover{
+    background-image: url(../img/validateHover.png);
+}
+.cancel{
+    display: none;
+    cursor:pointer;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/cancel.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+.cancel:hover{
+    background-image: url(../img/cancelHover.png);
+}
 .characterCell {
     min-height: 50px;
     background-position: center;
@@ -294,6 +347,7 @@ a:hover {
     background-repeat: no-repeat;
     margin-top: 20px;
     background-color: #d8bd7b;
+    border-radius: 4px;
 }
 
 .statsItem {
@@ -335,6 +389,7 @@ a:hover {
     margin-top: 50px;
     display: none;
     cursor: pointer;
+    z-index: 99999;
 }
 
 .overlay h3 {
@@ -522,6 +577,16 @@ a:hover {
     height: 100px;
 }
 /*keyframe*/
+@-webkit-keyframes trashable {
+ from {
+    -webkit-transform: rotate(2deg);
+ }
+ to {
+   -webkit-transform-origin:center center;
+   -webkit-transform: rotate(-2deg);
+ }
+
+}
 @keyframes shake {
 
     10%,

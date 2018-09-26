@@ -4,48 +4,49 @@ $cmpt=0;
 ?>
 <?php include "header.phtml" ?>
 <div><?php echo $msg_end_game ?></div>
+<?php if ($end_game != 0) {?>
 <div id="inventory" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
-                <h2>Drop</h2>
-                <div class="row d-flex justify-content-center">
-                    <?php foreach ($item_droper as $i){ ?>
-                    <div data-item="<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1">
-                        <img class="itemImg" src="img/<?php echo  $i->img ?>">
-                        <div id="overlay<?php echo  $cmpt ?>" class="overlay">
-                            <div>
-                                <h3>
-                                    <?php echo  $i->nom_equipement ?>
-                                </h3>
-                            </div>
-                            <div>
-                                <div>
-                                    <h3>Level : <span>
-                                            <?php echo  $i->level_min ?></span></h3>
-                                </div>
-                                <div>
-                                    <h3>Attaque :
-                                        <?php echo  $i->attaque ?>
-                                    </h3>
-                                </div>
-                                <div>
-                                    <h3>Defense : <span>
-                                            <?php echo  $i->defense ?></span></h3>
-                                </div>
-                                <div>
-                                    <h3>Critique :
-                                        <?php echo  $i->critique ?>
-                                    </h3>
-                                </div>
-                                <div>
-                                    <h3>Vie :
-                                        <?php echo  $i->vie ?>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<h2>Drop</h2>
+<div class="row d-flex justify-content-center">
+    <?php foreach ($item_droper as $i){ ?>
+    <div data-item="<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1">
+        <img class="itemImg" src="img/<?php echo  $i->img ?>">
+        <div id="overlay<?php echo  $cmpt ?>" class="overlay">
+            <div>
+<h3>
+    <?php echo  $i->nom_equipement ?>
+</h3>
+            </div>
+            <div>
+<div>
+    <h3>Level : <span>
+            <?php echo  $i->level_min ?></span></h3>
+</div>
+<div>
+    <h3>Attaque :
+        <?php echo  $i->attaque ?>
+    </h3>
+</div>
+<div>
+    <h3>Defense : <span>
+            <?php echo  $i->defense ?></span></h3>
+</div>
+<div>
+    <h3>Critique :
+        <?php echo  $i->critique ?>
+    </h3>
+</div>
+<div>
+    <h3>Vie :
+        <?php echo  $i->vie ?>
+    </h3>
+</div>
+            </div>
+        </div>
+    </div>
 
-                    <?php $cmpt += 1; } ?>
-                </div>
+    <?php $cmpt += 1; } ?>
+</div>
 
             </div>
 
@@ -61,3 +62,4 @@ $cmpt=0;
     
     showOverlay();  
     </script>
+    <?php } ?>

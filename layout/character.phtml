@@ -69,7 +69,7 @@ require 'php/getCharacter.php';
                                             <?php echo  $i->level_min ?></span></h3>
                                 </div>
                                 <div>
-                                    <h3>Attaque : <span>
+                                    <h3>Attaque : <span id="persoAtt">
                                         <?php echo  $i->attaque ?></span></h3>
                                 </div>
                                 <div>
@@ -107,7 +107,7 @@ require 'php/getCharacter.php';
 
     function addItem() {
         var character = <?php echo json_encode($character, JSON_FORCE_OBJECT) ?>;
-        console.log(character); 
+        //console.log(character); 
         $(".itemCell").click(function() {
             var item = $(this);
             var itemType = $(this).data("item");
@@ -118,6 +118,7 @@ require 'php/getCharacter.php';
             var vie = $(this).data("vie");
             if (itemType == 0 && lvl <= character.level) {
                 $("#sword").append(item);
+                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
                 character.critique = parseInt(character.critique)+parseInt(crit);
@@ -151,7 +152,7 @@ require 'php/getCharacter.php';
                 character.critique = parseInt(character.critique)+parseInt(crit);
                 character.vie = parseInt(character.vie)+parseInt(vie);
             }
-            console.log(character); 
+            //console.log(character); 
         });
     }
     function removeItem(){

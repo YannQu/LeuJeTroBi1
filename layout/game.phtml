@@ -93,7 +93,7 @@ var_dump($equipement);*/
             div_txt.innerHTML += "Vous avez gagné !</br>";
             $("#enemyCharacter").addClass("apply-shake");
             
-            if (perso.goAttaque(ennemi, 2, div_txt) == false)
+            if (perso.goAttaque(ennemi, 1, div_txt) == false)
             {
                 endGame(1);
             }
@@ -104,7 +104,7 @@ var_dump($equipement);*/
             div_txt.innerHTML += "Vous avez perdu !</br>";
             $("#playerCharacter").addClass("apply-shake");
             
-            if (ennemi.goAttaque(perso, 2, div_txt) == false)
+            if (ennemi.goAttaque(perso, 1, div_txt) == false)
             {
                 endGame(0);
             }

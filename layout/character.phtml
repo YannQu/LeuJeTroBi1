@@ -17,19 +17,19 @@ require 'php/getCharacter.php';
                             <?php echo $character->level ?></span></h3>
                 </div>
                 <div class="statsItem">
-                    <h3 id="life" data-stats="<?php echo $character->vie ?>">Vie : <span>
+                    <h3 id="life" data-stats="<?php echo $character->vie ?>">Vie : <span id="persoVie">
                             <?php echo  $character->vie ?></span></h3>
                 </div>
                 <div class="statsItem">
-                    <h3 id="attack" data-stats="<?php echo $character->attaque ?>">Attaque : <span>
+                    <h3 id="attack" data-stats="<?php echo $character->attaque ?>">Attaque : <span id="persoAtt">
                             <?php echo $character->attaque ?></span></h3>
                 </div>
                 <div class="statsItem">
-                    <h3 id="defense" data-stats="<?php echo $character->defense ?>">Défense : <span>
+                    <h3 id="defense" data-stats="<?php echo $character->defense ?>">Défense : <span id="persoDef">
                             <?php echo $character->defense ?></span></h3>
                 </div>
                 <div class="statsItem">
-                    <h3 id="critic" data-stats="<?php echo $character->critique ?>">Critique : <span>
+                    <h3 id="critic" data-stats="<?php echo $character->critique ?>">Critique : <span id="persoCrit">
                             <?php echo  $character->critique ?>%</span></h3>
                 </div>
             </div>
@@ -69,7 +69,7 @@ require 'php/getCharacter.php';
                                             <?php echo  $i->level_min ?></span></h3>
                                 </div>
                                 <div>
-                                    <h3>Attaque : <span id="persoAtt">
+                                    <h3>Attaque : <span>
                                         <?php echo  $i->attaque ?></span></h3>
                                 </div>
                                 <div>
@@ -96,6 +96,9 @@ require 'php/getCharacter.php';
 </div>
 
 <script type="text/javascript">
+
+    var character = <?php echo json_encode($character, JSON_FORCE_OBJECT) ?>
+
     function showOverlay() {
         $(".itemCell").hover(function() {
             $(this).children().show();
@@ -106,8 +109,8 @@ require 'php/getCharacter.php';
     }
 
     function addItem() {
-        var character = <?php echo json_encode($character, JSON_FORCE_OBJECT) ?>;
-        //console.log(character); 
+        
+        
         $(".itemCell").click(function() {
             var item = $(this);
             var itemType = $(this).data("item");
@@ -118,9 +121,13 @@ require 'php/getCharacter.php';
             var vie = $(this).data("vie");
             if (itemType == 0 && lvl <= character.level) {
                 var charItem = $("#sword").children(".itemCell");
+                console.log(charItem)
                 $("#inventory").find(".row").append(charItem);
                 $("#sword").append(item);
                 $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
+                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
+                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
+                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
                 character.critique = parseInt(character.critique)+parseInt(crit);
@@ -130,6 +137,10 @@ require 'php/getCharacter.php';
                 var charItem = $("#helmet").children(".itemCell");
                 $("#inventory").find(".row").append(charItem);
                 $("#helmet").append(item);
+                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
+                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
+                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
+                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
                 character.critique = parseInt(character.critique)+parseInt(crit);
@@ -139,6 +150,10 @@ require 'php/getCharacter.php';
                 var charItem = $("#armour").children(".itemCell");
                 $("#inventory").find(".row").append(charItem);
                 $("#armour").append(item);
+                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
+                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
+                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
+                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
                 character.critique = parseInt(character.critique)+parseInt(crit);
@@ -148,6 +163,10 @@ require 'php/getCharacter.php';
                 var charItem = $("#boots").children(".itemCell");
                 $("#inventory").find(".row").append(charItem);
                 $("#boots").append(item);
+                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
+                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
+                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
+                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
                 character.critique = parseInt(character.critique)+parseInt(crit);
@@ -157,6 +176,10 @@ require 'php/getCharacter.php';
                 var charItem = $("#shield").children(".itemCell");
                 $("#inventory").find(".row").append(charItem);
                 $("#shield").append(item);
+                $('#persoAtt').text((parseInt(character.attaque)+parseInt(att)).toString());
+                $('#persoDef').text((parseInt(character.defense)+parseInt(def)).toString());
+                $('#persoCrit').text((parseInt(character.critique)+parseInt(crit)).toString() + "%");
+                $('#persoVie').text((parseInt(character.vie)+parseInt(vie)).toString());
                 character.attaque = parseInt(character.attaque)+parseInt(att);
                 character.defense = parseInt(character.defense)+parseInt(def);
                 character.critique = parseInt(character.critique)+parseInt(crit);

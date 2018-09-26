@@ -2,8 +2,34 @@
 <div id="menu" class="d-flex justify-content-center">
     <h1 class="logo">MiniBoys</h1>
     <?php if (!isset($_GET['insc'])) { ?>
-    	<a href="Co.php" class=" btn-default btn disabled">Personnage</a>
-    	<a href="Co.php?cmpgn=yes" class=" btn-default btn ">Campagne</a>
+    	<a href="Co.php" id="persoLink" class="btn-default btn gameLink">Personnage</a>
+    	<a href="Co.php?cmpgn=yes" id="campLink" class="btn-default btn gameLink">Campagne</a>
     <?php } ?>
     <a href="php/delete.php" class=" btn-default btn off ">Deconnexion</a>
 </div>
+
+<script type="text/javascript">
+	var getUrlParameter = function getUrlParameter(sParam) {
+	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+	        sURLVariables = sPageURL.split('&'),
+	        sParameterName,
+	        i;
+
+	    for (i = 0; i < sURLVariables.length; i++) {
+	        sParameterName = sURLVariables[i].split('=');
+
+	        if (sParameterName[0] === sParam) {
+	            return sParameterName[1] === undefined ? true : sParameterName[1];
+	        }
+	    }
+	};
+
+	$( document ).ready(function() {
+		var param = getUrlParameter('cmpgn');
+    	if (param == "yes") {
+    		$( "#campLink" ).addClass( "disabled" );
+    	}else{
+    		$( "#persoLink" ).addClass( "disabled" );
+    	}
+	});
+</script>

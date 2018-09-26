@@ -1,0 +1,71 @@
+<script type="text/javascript">
+    function showOverlay() {
+        $(".itemCell").hover(function() {
+            $(this).children().show();
+        });
+        $(".itemCell").mouseleave(function() {
+            $(this).children(".overlay").hide();
+        });
+    }
+
+    function addItem() {
+        var character = <?php echo json_encode($character, JSON_FORCE_OBJECT) ?>;
+        console.log(character); 
+        $(".itemCell").click(function() {
+            var item = $(this);
+            var itemType = $(this).data("item");
+            var att = $(this).data("attaque");
+            var def = $(this).data("defense");
+            var crit = $(this).data("critique");
+            var lvl = $(this).data("level");
+            var vie = $(this).data("vie");
+            if (itemType == 0 && lvl <= character.level) {
+                $("#sword").append(item);
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
+            }
+            if (itemType == 1 && lvl <= character.level) {
+                $("#helmet").append(item);
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
+            }
+            if (itemType == 2 && lvl <= character.level) {
+                $("#armour").append(item);
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
+            }
+            if (itemType == 3 && lvl <= character.level) {
+                $("#boots").append(item);
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
+            }
+            if (itemType == 4 && lvl <= character.level) {
+                $("#shield").append(item);
+                character.attaque = parseInt(character.attaque)+parseInt(att);
+                character.defense = parseInt(character.defense)+parseInt(def);
+                character.critique = parseInt(character.critique)+parseInt(crit);
+                character.vie = parseInt(character.vie)+parseInt(vie);
+            }
+            console.log(character); 
+        });
+    }
+    function removeItem(){
+        $(".characterCell").click(function(){
+            console.log("click");
+            var item = $(this).children(".itemCell");
+            console.log(item);
+            $("#inventory").find(".row").append(item);
+        })
+    }
+    removeItem();
+    addItem();
+    showOverlay();  
+</script>

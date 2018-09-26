@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS `equipement` (
   `critique` int(11) NOT NULL,
   `level_min` int(11) NOT NULL,
   `pour_loot` int(11) NOT NULL,
+  `img` varchar(200) NOT NULL,
   PRIMARY KEY (`id_equipement`),
   UNIQUE KEY `nom_equipement` (`nom_equipement`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -96,12 +97,12 @@ CREATE TABLE IF NOT EXISTS `equipement` (
 -- Déchargement des données de la table `equipement`
 --
 
-INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`) VALUES
-(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50),
-(2, 1, 'casque coccinelle', 1, 3, 5, 2, 1, 60),
-(3, 2, 'armure de coccinelle', 1, 5, 10, 5, 2, 40),
-(4, 3, 'bottes de coccinnelle', 2, 3, 20, 15, 3, 45),
-(5, 4, 'bouclier de coccinelle', 0, 10, 20, 30, 4, 25);
+INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`, `img`) VALUES
+(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50, '1_left arm_.png'),
+(2, 1, 'casque coccinelle', 1, 3, 5, 2, 1, 60, '3_head_.png'),
+(3, 2, 'armure de coccinelle', 1, 5, 10, 5, 2, 40, '1_body_.png'),
+(4, 3, 'bottes de coccinnelle', 2, 3, 20, 15, 3, 45, '1_left lag_.png'),
+(5, 4, 'bouclier de coccinelle', 0, 10, 20, 30, 4, 25, '3_shield_.png');
 
 -- --------------------------------------------------------
 

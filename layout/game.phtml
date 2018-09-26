@@ -6,31 +6,27 @@ var_dump($ennemi);
 var_dump($equipement);*/
 ?>
 <script>
-    class Personnage{
-        constructor(span_vie, name, vie, attaque, defense, critique)
-        {
-            this.name=name;
-            this.vie_max=vie;
-            this.current_vie=vie;
-            this.attaque=attaque;
-            this.defense=defense;
-            this.critique=critique;
-            this.span_vie=span_vie;
+    class Personnage {
+        constructor(span_vie, name, vie, attaque, defense, critique) {
+            this.name = name;
+            this.vie_max = vie;
+            this.current_vie = vie;
+            this.attaque = attaque;
+            this.defense = defense;
+            this.critique = critique;
+            this.span_vie = span_vie;
         }
 
-        goAttaque(cible, multiplicateur, txt)
-        {
+        goAttaque(cible, multiplicateur, txt) {
             console.log('attaque');
             var mult_critique = 1;
             var random_crit = getRandomInt(100) + 1;
-            if (random_crit <= this.critique)
-            {
+            if (random_crit <= this.critique) {
                 txt.innerHTML += this.name + " a fait un coup critique !</br>"
                 mult_critique = 2;
             }
             var nb_dommage = this.attaque * multiplicateur * mult_critique - cible.defense;
-            if (nb_dommage < 0)
-            {
+            if (nb_dommage < 0) {
                 nb_dommage = 0;
             }
             txt.innerHTML += this.name + " a fait une attaque de " + nb_dommage + " dégats.</br>";
@@ -38,12 +34,10 @@ var_dump($equipement);*/
             return rslt;
         }
 
-        isAttaque(nb_dommage, txt)
-        {
+        isAttaque(nb_dommage, txt) {
             this.current_vie -= nb_dommage;
             var rslt = true;
-            if (this.current_vie <= 0)
-            {
+            if (this.current_vie <= 0) {
                 this.current_vie = 0;
                 txt.innerHTML += this.name + " est mort!</br>";
                 rslt = false;
@@ -51,24 +45,24 @@ var_dump($equipement);*/
             this.refreshLife();
             return rslt;
         }
-        refreshLife()
-        {
+        refreshLife() {
             var span_vie = document.getElementById(this.span_vie);
             span_vie.innerHTML = this.current_vie;
         }
 
     }
-    var perso=new Personnage("vie_joueur", "<?php echo $user->username ; ?>", <?php echo $character->vie ; ?>, <?php echo $character->attaque ; ?>, <?php echo $character->defense ; ?>, <?php echo $character->critique; ?>);
-    var ennemi=new Personnage("vie_ennemi", "<?php echo $ennemi->nom ; ?>", <?php echo $ennemi->vie ; ?>, <?php echo $ennemi->attaque ; ?>, <?php echo $ennemi->defense ; ?>, <?php echo $ennemi->critique; ?>);
+    var perso = new Personnage("vie_joueur", "<?php echo $user->username ; ?>", <?php echo $character->vie ; ?>, <?php echo $character->attaque ; ?>, <?php echo $character->defense ; ?>, <?php echo $character->critique; ?>);
+    var ennemi = new Personnage("vie_ennemi", "<?php echo $ennemi->nom ; ?>", <?php echo $ennemi->vie ; ?>, <?php echo $ennemi->attaque ; ?>, <?php echo $ennemi->defense ; ?>, <?php echo $ennemi->critique; ?>);
     console.log(perso);
     console.log(ennemi);
+
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
     function endGame(end_game)
     {
-        var id_manche = <?php echo $manche->id_campagne?>;
-        window.location.replace('Co.php?endgame=yes&end_game=' + end_game + "&id_manche=" + id_manche);
+        var id_campagne = <?php echo $manche->id_campagne?>;
+        window.location.replace('Co.php?endgame=yes&end_game=' + end_game + "&id_campagne=" + id_campagne);
     }
 
     function bataille(type_j)
@@ -79,8 +73,7 @@ var_dump($equipement);*/
         div_txt.innerHTML += "Vous avez fait " + type[type_j] + "</br>";
         div_txt.innerHTML += "Votre ennemi a fait " + type[type_e] + "</br>";
         var rslt;
-        if (type_e == type_j)
-        {
+        if (type_e == type_j) {
             rslt = 0;
             div_txt.innerHTML += "Egaliter !</br>";
             if (perso.goAttaque(ennemi, 1, div_txt) == false)
@@ -112,13 +105,46 @@ var_dump($equipement);*/
         }
     }
 </script>
+<div class="row">
+    <div id="game" class="container-fluid">
+        <?php include "header.phtml"; ?>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-3 m-2 platform leftPlatform">
+                <div class="lifeContainer">
+                    <div class="lifeBar">
+                        <div class="lifePoint"><span id="vie_joueur">
+                                <?php echo $character->vie ?> </span>/
+                            <?php echo $character->vie ?>
+                        </div>
+                    </div>
+                </div>
+                <img class="battleCharacter" src="/MiniBoys/img/guerrier.png" alt="">
+                <img class="platformImg" src="/MiniBoys/img/platformGreen.png" alt="">
+            </div>
+            <div class="col-lg-2  m-2 vs">
+                <img class="img-fluid" src="/MiniBoys/img/vs.png" alt="">
+            </div>
+            <div class="col-lg-3 m-2 platform rightPlatfrom">
+                <div class="lifeContainer">
+                    <div class="lifeBar">
+                        <div class="lifePoint"> <span id="vie_ennemi">
+                                <?php echo $ennemi->vie ?> </span>/
+                            <?php echo $ennemi->vie ?>
+                        </div>
+                    </div>
+                </div>
+                <img class="battleCharacter" src="/MiniBoys/img/ladybug.png" alt="">
+                <img class="platformImg" src="/MiniBoys/img/platformGreen.png" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <div id='txt_bataille'>
+                <button onclick="bataille(0);">Pierre</button>
+                <button onclick="bataille(1);">Feuille</button>
+                <button onclick="bataille(2);">Ciseau</button>
 
-<div>Vie du joueur : <span id="vie_joueur"><?php echo $character->vie ?> </span>/<?php echo $character->vie ?> </div>
-<div>Vie de l'ennemi : <span id="vie_ennemi"><?php echo $ennemi->vie ?> </span>/<?php echo $ennemi->vie ?> </div>
-<div id='txt_bataille'>
+            </div>
+        </div>
+    </div>
+
 </div>
-<button onclick="bataille(0);">Pierre</button>
-<button onclick="bataille(1);">Feuille</button>
-<button onclick="bataille(2);">Ciseau</button>
-
-

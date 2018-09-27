@@ -53,7 +53,10 @@ require 'php/getCharacter.php';
             </div>
 
             <div id="inventory" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
-                <h2>Inventaire</h2>
+                <h2>Inventaire </h2>
+                <div class="trash"></div>
+                <div class="validate"></div>
+                <div class="cancel"></div>
                 <div class="row d-flex justify-content-center">
                     <?php foreach ($detailsInv as $i){ ?>
                     <div class="col-lg-3 itemCell m-1" data-item="<?php echo $i->type_equipement ?>" data-level="<?php echo $i->level_min ?>" data-attaque="<?php echo $i->attaque ?>" data-defense="<?php echo $i->defense ?>" data-critique="<?php echo $i->critique ?>" data-vie="<?php echo $i->vie ?>">
@@ -71,7 +74,7 @@ require 'php/getCharacter.php';
                                 </div>
                                 <div>
                                     <h3>Attaque : <span>
-                                        <?php echo  $i->attaque ?></span></h3>
+                                            <?php echo  $i->attaque ?></span></h3>
                                 </div>
                                 <div>
                                     <h3>Defense : <span>
@@ -79,11 +82,11 @@ require 'php/getCharacter.php';
                                 </div>
                                 <div>
                                     <h3>Critique : <span>
-                                        <?php echo  $i->critique ?></span></h3>
+                                            <?php echo  $i->critique ?></span></h3>
                                 </div>
                                 <div>
                                     <h3>Vie : <span>
-                                        <?php echo  $i->vie ?></span></h3>
+                                            <?php echo  $i->vie ?></span></h3>
                                 </div>
                             </div>
                         </div>
@@ -97,9 +100,9 @@ require 'php/getCharacter.php';
 </div>
 
 <script type="text/javascript">
-
     var character = <?php echo json_encode($character, JSON_FORCE_OBJECT) ?>;
     var listInv = <?php echo json_encode($detailsInv) ?>;
+    var trashOrNot = false;
 
     function showOverlay() {
         $(".itemCell").hover(function() {
@@ -119,67 +122,87 @@ require 'php/getCharacter.php';
             var critInv = $(this).data("critique");
             var lvlInv = $(this).data("level");
             var vieInv = $(this).data("vie");
-            if (lvlInv <= character.level) {
-                if (itemType == 0) {
-                    var charItem = $("#sword").children(".itemCell");
-                }else if(itemType == 1){
-                    var charItem = $("#helmet").children(".itemCell");
-                }else if(itemType == 2){
-                    var charItem = $("#armour").children(".itemCell");
-                }else if(itemType == 3){
-                    var charItem = $("#boots").children(".itemCell");
-                }else if(itemType == 4){
-                    var charItem = $("#shield").children(".itemCell");
-                }
-                var attPerso = charItem.data("attaque");
-                var defPerso = charItem.data("defense");
-                var critPerso = charItem.data("critique");
-                //var lvlPerso = charItem.data("level");
-                var viePerso = charItem.data("vie");
+            if ($(this).hasClass("trashableItem")) {
+                $(this).addClass("selectedTrashableItem");
+                $(".validate").click(function(){
+                    $(".itemCell").each(function(){
+                         if($(this).hasClass("selectedTrashableItem")){
+                        $(this).remove();
+                        $(this).removeClass("trashableItem");
+                    }
+                    });
+                   
+                });
+                $(".cancel").click(function(){
+                    $(".itemCell").each(function(){
+                        $(this).removeClass("trashableItem");
+                        $(this).removeClass("selectedTrashableItem");
+                    });
+                    });
+                } else {
+                if (lvlInv <= character.level) {
+                    if (itemType == 0) {
+                        var charItem = $("#sword").children(".itemCell");
+                    } else if (itemType == 1) {
+                        var charItem = $("#helmet").children(".itemCell");
+                    } else if (itemType == 2) {
+                        var charItem = $("#armour").children(".itemCell");
+                    } else if (itemType == 3) {
+                        var charItem = $("#boots").children(".itemCell");
+                    } else if (itemType == 4) {
+                        var charItem = $("#shield").children(".itemCell");
+                    }
+                    var attPerso = charItem.data("attaque");
+                    var defPerso = charItem.data("defense");
+                    var critPerso = charItem.data("critique");
+                    //var lvlPerso = charItem.data("level");
+                    var viePerso = charItem.data("vie");
 
 
-                if (charItem.length == 1) {
-                    character.attaque = parseInt(character.attaque)+parseInt(attInv)-parseInt(attPerso);
-                    character.defense = parseInt(character.defense)+parseInt(defInv)-parseInt(defPerso);
-                    character.critique = parseInt(character.critique)+parseInt(critInv)-parseInt(critPerso);
-                    character.vie = parseInt(character.vie)+parseInt(vieInv)-parseInt(viePerso);
-                }else{
-                    character.attaque = parseInt(character.attaque)+parseInt(attInv);
-                    character.defense = parseInt(character.defense)+parseInt(defInv);
-                    character.critique = parseInt(character.critique)+parseInt(critInv);
-                    character.vie = parseInt(character.vie)+parseInt(vieInv);
+                    if (charItem.length == 1) {
+                        character.attaque = parseInt(character.attaque) + parseInt(attInv) - parseInt(attPerso);
+                        character.defense = parseInt(character.defense) + parseInt(defInv) - parseInt(defPerso);
+                        character.critique = parseInt(character.critique) + parseInt(critInv) - parseInt(critPerso);
+                        character.vie = parseInt(character.vie) + parseInt(vieInv) - parseInt(viePerso);
+                    } else {
+                        character.attaque = parseInt(character.attaque) + parseInt(attInv);
+                        character.defense = parseInt(character.defense) + parseInt(defInv);
+                        character.critique = parseInt(character.critique) + parseInt(critInv);
+                        character.vie = parseInt(character.vie) + parseInt(vieInv);
+                    }
+                    $("#inventory").find(".row").append(charItem);
+                    if (itemType == 0) {
+                        $("#sword").append(item);
+                    } else if (itemType == 1) {
+                        $("#helmet").append(item);
+                    } else if (itemType == 2) {
+                        $("#armour").append(item);
+                    } else if (itemType == 3) {
+                        $("#boots").append(item);
+                    } else if (itemType == 4) {
+                        $("#shield").append(item);
+                    }
+                    $('#persoAtt').text(character.attaque);
+                    $('#persoDef').text(character.defense);
+                    $('#persoCrit').text(character.critique + "%");
+                    $('#persoVie').text(character.vie);
                 }
-                $("#inventory").find(".row").append(charItem);
-                if (itemType == 0) {
-                    $("#sword").append(item);
-                }else if(itemType == 1){
-                    $("#helmet").append(item);
-                }else if(itemType == 2){
-                    $("#armour").append(item);
-                }else if(itemType == 3){
-                    $("#boots").append(item);
-                }else if(itemType == 4){
-                    $("#shield").append(item);
-                }
-                $('#persoAtt').text(character.attaque);
-                $('#persoDef').text(character.defense);
-                $('#persoCrit').text(character.critique + "%");
-                $('#persoVie').text(character.vie);
             }
         });
     }
-    function removeItem(){
-        $(".characterCell").click(function(){
+
+    function removeItem() {
+        $(".characterCell").click(function() {
             var item = $(this).children(".itemCell");
             var attInv = item.data("attaque");
             var defInv = item.data("defense");
             var critInv = item.data("critique");
             var lvlInv = item.data("level");
             var vieInv = item.data("vie");
-            character.attaque = parseInt(character.attaque)-parseInt(attInv);
-            character.defense = parseInt(character.defense)-parseInt(defInv);
-            character.critique = parseInt(character.critique)-parseInt(critInv);
-            character.vie = parseInt(character.vie)-parseInt(vieInv);
+            character.attaque = parseInt(character.attaque) - parseInt(attInv);
+            character.defense = parseInt(character.defense) - parseInt(defInv);
+            character.critique = parseInt(character.critique) - parseInt(critInv);
+            character.vie = parseInt(character.vie) - parseInt(vieInv);
             $('#persoAtt').text(character.attaque);
             $('#persoDef').text(character.defense);
             $('#persoCrit').text(character.critique + "%");
@@ -192,7 +215,29 @@ require 'php/getCharacter.php';
         console.log("bibop")
     }
 
+    function trashItem() {
+        $(".trash").click(function() {
+            $(".validate").css("display", "inline-block");
+            $(".cancel").css("display", "inline-block");
+            $(".itemCell").addClass("trashableItem");
+            trashOrNot = !trashOrNot;
+        });
+        $(".validate").click(function() {
+            $(".validate").css("display", "none");
+            $(".cancel").css("display", "none");
+            $(".itemCell").removeClass("trashableItem");
+            trashOrNot = !trashOrNot;
+        });
+        $(".cancel").click(function() {
+            $(".validate").css("display", "none");
+            $(".cancel").css("display", "none");
+            $(".itemCell").removeClass("trashableItem");
+            trashOrNot = !trashOrNot;
+        });
+
+    }
+    trashItem();
     removeItem();
     addItem();
-    showOverlay();  
+    showOverlay();
 </script>

@@ -278,6 +278,7 @@ a:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     color: #805b04;
     height: auto;
+    z-index: 2;
 }
 
 .characterImg {
@@ -394,7 +395,6 @@ a:hover {
     background-color: black;
     color: white;
     height: auto;
-    z-index: 999;
     width: 150px;
     text-shadow: none;
     border-radius: 3px;
@@ -705,7 +705,7 @@ a:hover {
 }
 
 /*rain*/
-body {
+#game {
     overflow: hidden;
 }
 
@@ -736,6 +736,9 @@ body {
     }
 }
 /******* Campagne *******/
+#pills-tab{
+    position: fixed
+}
 .btn_cmp{
     width: auto;
     text-align: center;
@@ -829,7 +832,6 @@ body {
 }
 
 .element-arbre{
-        
     background-image: url(../img/Tree_2.png);
     background-repeat: no-repeat;
     background-size: contain;

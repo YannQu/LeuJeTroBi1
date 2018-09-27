@@ -2,169 +2,167 @@
 include 'php/campagne.php';
 ?>
 
-
+<style>
+    *{
+        border: 1px solid red;
+    }
+</style>
 <div class="row">
     <div class="container-fluid" id="createChar">
         <div class="row">
             <?php include "header.phtml" ?>
-            <div class="container-fluid support">
-            	<div class="support-fond">
-                <h2 class="btn_cmp">Test Campagne "Aux fond du Jardin</h2>
-                <div class="container-fluid" style="padding-bottom: 15px">
-        
-                		<div class="row">
-  						<ul class="nav nav-pills nav-niv md-3" id="pills-tab" role="tablist">
-  							<li class="nav-item li-niv">
-  								<a class="nav-link active a-niv" id="pills-nv1-tab" data-toggle="pill" href="#pills-nv1" role="tab" aria-controls="pills-nv1" aria-selected="true">1</a>
-  							</li>
-  							<li class="nav-item li-niv">
-  								<a class="nav-link a-niv" id="pills-nv2-tab" data-toggle="pill" href="#pills-nv2" role="tab" aria-controls="pills-nv2" aria-selected="false">2</a>
-  							</li>
-  							<li class="nav-item li-niv">
-  								<a class="nav-link a-niv" id="pills-nv3-tab" data-toggle="pill" href="#pills-nv3" role="tab" aria-controls="pills-nv3" aria-selected="false">3</a>
-  							</li>
-  							<li class="nav-item li-niv">
-  								<a class="nav-link a-niv" id="pills-nv4-tab" data-toggle="pill" href="#pills-nv4" role="tab" aria-controls="pills-nv4" aria-selected="false">4</a>
-  							</li>
-  							<li class="nav-item li-niv">
-  								<a class="nav-link a-niv" id="pills-nv5-tab" data-toggle="pill" href="#pills-nv5" role="tab" aria-controls="pills-nv5" aria-selected="false">5</a>
-  							</li>
-  						</ul>
-  						</div>
-  						<div class="row row-carte carte-bordure">
-  						<!--<div class="carte-fond">-->
-	  						<div class="tab-content carte" id="pills-tabContent">
-	  							<div class="tab-pane fade show active" id="pills-nv1" role="tabpanel" aria-labelledby="pills-nv1-tab">
-	  								<div class="row row-carte">
-	  									<div class="carte-support">
-		  									<div class="row row-carte">
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="Co.php?page=game&id_campagne=1" class="niv-home"></a>
-		  										</div>
-		  										<div class="element-ligne col-md-3 offset-md-1">
+            <h2 class="btn_cmp">Test Campagne "Aux fond du Jardin</h2>
+            <div class="container-fluid" style="padding-bottom: 15px">
+                <div class="row row-carte carte-bordure">
+                    <!--<div class="carte-fond">-->
+                    <div class="tab-content carte" id="pills-tabContent">
+                        <div class="row">
+                            <ul class="nav nav-pills nav-niv md-3" id="pills-tab" role="tablist">
+                                <li class="nav-item li-niv">
+                                    <a class="nav-link active a-niv" id="pills-nv1-tab" data-toggle="pill" href="#pills-nv1" role="tab" aria-controls="pills-nv1" aria-selected="true">1</a>
+                                </li>
+                                <li class="nav-item li-niv">
+                                    <a class="nav-link a-niv" id="pills-nv2-tab" data-toggle="pill" href="#pills-nv2" role="tab" aria-controls="pills-nv2" aria-selected="false">2</a>
+                                </li>
+                                <li class="nav-item li-niv">
+                                    <a class="nav-link a-niv" id="pills-nv3-tab" data-toggle="pill" href="#pills-nv3" role="tab" aria-controls="pills-nv3" aria-selected="false">3</a>
+                                </li>
+                                <li class="nav-item li-niv">
+                                    <a class="nav-link a-niv" id="pills-nv4-tab" data-toggle="pill" href="#pills-nv4" role="tab" aria-controls="pills-nv4" aria-selected="false">4</a>
+                                </li>
+                                <li class="nav-item li-niv">
+                                    <a class="nav-link a-niv" id="pills-nv5-tab" data-toggle="pill" href="#pills-nv5" role="tab" aria-controls="pills-nv5" aria-selected="false">5</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-nv1" role="tabpanel" aria-labelledby="pills-nv1-tab">
+                            <div class="row row-carte">
+                                <div class="carte-support">
+                                    <div class="row row-carte">
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="Co.php?page=game&id_campagne=1" class="niv-home"></a>
+                                        </div>
+                                        <div class="element-ligne col-md-3 offset-md-1">
 
-		  										</div>
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="Co.php?page=game&id_campagne=2" class="niv-home"></a>
-		  										</div>
-		  									</div>
-		  									<div class="row row-carte">
-		  										<div class="col-md-3 offset-md-9 element-ligne-horizontal">
-		  										</div>
-		  									</div>
-		  									<div class="row row-carte">
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="Co.php?page=game&id_campagne=3" class="niv-home"></a>
-		  										</div>
-		  										<div class="element-ligne col-md-3 offset-md-1">
+                                        </div>
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="Co.php?page=game&id_campagne=2" class="niv-home"></a>
+                                        </div>
+                                    </div>
+                                    <div class="row row-carte">
+                                        <div class="col-md-3 offset-md-9 element-ligne-horizontal">
+                                        </div>
+                                    </div>
+                                    <div class="row row-carte">
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="Co.php?page=game&id_campagne=3" class="niv-home"></a>
+                                        </div>
+                                        <div class="element-ligne col-md-3 offset-md-1">
 
-		  										</div>
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="Co.php?page=game&id_campagne=4" class="niv-home"></a>
-		  										</div>
-		  									</div>
-	  									</div>
-	  								</div>
-	  							</div>
-	  							<div class="tab-pane fade" id="pills-nv2" role="tabpanel" aria-labelledby="pills-nv2-tab">
-	  								<div class="row row-carte">
-	  									<div class="carte-support">
-		  									<div class="row row-carte">
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="Co.php?page=game&id_campagne=5" class="niv-home"></a>
-		  										</div>
-		  										<div class="col-md-3 offset-md-1">
+                                        </div>
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="Co.php?page=game&id_campagne=4" class="niv-home"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-nv2" role="tabpanel" aria-labelledby="pills-nv2-tab">
+                            <div class="row row-carte">
+                                <div class="carte-support">
+                                    <div class="row row-carte">
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="Co.php?page=game&id_campagne=5" class="niv-home"></a>
+                                        </div>
+                                        <div class="col-md-3 offset-md-1">
 
-		  										</div>
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="Co.php?page=game&id_campagne=6" class="niv-home"></a>
-		  										</div>
-		  									</div>
-		  									<div class="row row-carte">
-		  										<div class="col-md-3 offset-md-1 element-ligne-horizontal">
-		  										</div>
-		  										<div class="col-md-3 offset-md-5 element-ligne-horizontal">
-		  										</div>
-		  									</div>
-		  									<div class="row row-carte">
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="Co.php?page=game&id_campagne=7" class="niv-home"></a>
-		  										</div>
-		  										<div class="element-ligne col-md-3 offset-md-1">
+                                        </div>
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="Co.php?page=game&id_campagne=6" class="niv-home"></a>
+                                        </div>
+                                    </div>
+                                    <div class="row row-carte">
+                                        <div class="col-md-3 offset-md-1 element-ligne-horizontal">
+                                        </div>
+                                        <div class="col-md-3 offset-md-5 element-ligne-horizontal">
+                                        </div>
+                                    </div>
+                                    <div class="row row-carte">
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="Co.php?page=game&id_campagne=7" class="niv-home"></a>
+                                        </div>
+                                        <div class="element-ligne col-md-3 offset-md-1">
 
-		  										</div>
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="Co.php?page=game&id_campagne=8" class="niv-home"></a>
-		  										</div>
-		  									</div>
-	  									</div>
-	  								</div>
-	  							</div>
-	  							<div class="tab-pane fade" id="pills-nv3" role="tabpanel" aria-labelledby="pills-nv3-tab">
-	  								<div class="row row-carte">
-	  									<div class="carte-support">
-		  									<div class="row row-carte">
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
-		  										</div>
-		  										<div class="element-ligne col-md-3 offset-md-1">
+                                        </div>
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="Co.php?page=game&id_campagne=8" class="niv-home"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-nv3" role="tabpanel" aria-labelledby="pills-nv3-tab">
+                            <div class="row row-carte">
+                                <div class="carte-support">
+                                    <div class="row row-carte">
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="#" class="niv-home"></a>
+                                        </div>
+                                        <div class="element-ligne col-md-3 offset-md-1">
 
-		  										</div>
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
-		  										</div>
-		  									</div>
-		  									<div class="row row-carte">
-		  										<div class="col-md-3 offset-md-9 element-ligne-horizontal">
-		  										</div>
-		  									</div>
-		  									<div class="row row-carte">
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
-		  										</div>
-		  										<div class="element-ligne col-md-3 offset-md-1">
+                                        </div>
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="#" class="niv-home"></a>
+                                        </div>
+                                    </div>
+                                    <div class="row row-carte">
+                                        <div class="col-md-3 offset-md-9 element-ligne-horizontal">
+                                        </div>
+                                    </div>
+                                    <div class="row row-carte">
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="#" class="niv-home"></a>
+                                        </div>
+                                        <div class="element-ligne col-md-3 offset-md-1">
 
-		  										</div>
-		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
-		  										</div>
-		  									</div>
-	  									</div>
-	  								</div>
-	  							</div>
-	  							<div class="tab-pane fade" id="pills-nv4" role="tabpanel" aria-labelledby="pills-nv4-tab">
-	  								<div class="row row-carte">
-	  									<h2>test4 row-carte</h2>
-	  								</div>
-	  							</div>
-	  							<div class="tab-pane fade" id="pills-nv5" role="tabpanel" aria-labelledby="pills-nv5-tab">
-	  								<div class="row row-carte">
-	  									<h2>test5</h2>
-	  								</div>
-	  							</div>
-	  						<!--</div>-->
-	  					</div>
-  					</div>
-                	</div>
+                                        </div>
+                                        <div class="element-arbre col-md-3 offset-md-1">
+                                            <a href="#" class="niv-home"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-nv4" role="tabpanel" aria-labelledby="pills-nv4-tab">
+                            <div class="row row-carte">
+                                <h2>test4 row-carte</h2>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-nv5" role="tabpanel" aria-labelledby="pills-nv5-tab">
+                            <div class="row row-carte">
+                                <h2>test5</h2>
+                            </div>
+                        </div>
+                        <!--</div>-->
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-	/*$( document ).ready(function() {
-		var param = getUrlParameter('page');
-    	if (param == "cmpgn" || param == "endgame" ) {
-    		$( "#campLink" ).addClass( "disabled" );
-    	}else{
-    		$( "#persoLink" ).addClass( "disabled" );
-    	}
-	});*/
-	function playe(){
-		var campagne = <?php echo json_encode($detailsCJ, JSON_FORCE_OBJECT) ?>;
-		
-		console.log(campagne);
-	}
-	playe();
+    /*$( document ).ready(function() {
+    		var param = getUrlParameter('page');
+        	if (param == "cmpgn" || param == "endgame" ) {
+        		$( "#campLink" ).addClass( "disabled" );
+        	}else{
+        		$( "#persoLink" ).addClass( "disabled" );
+        	}
+    	});*/
+    function playe() {
+        var campagne = <?php echo json_encode($detailsCJ, JSON_FORCE_OBJECT) ?>;
+
+        console.log(campagne);
+    }
+    playe();
 </script>

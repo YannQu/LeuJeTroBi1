@@ -178,10 +178,7 @@ require 'php/getCharacter.php';
                         $.ajax({
                                 url : 'php/unequip_item.php', // La ressource ciblée
                                 type : 'POST', // Le type de la requête HTTP.
-                                data : 'id_inventaire=' + charItem.data('id') + '&id_personnage='+ <?php echo $character->id_personnage ?>,
-                                success : function(code_html, statut){ // code_html contient le HTML renvoyé
-                                    alert(code_html);
-                                }
+                                data : 'id_inventaire=' + charItem.data('id') + '&id_personnage='+ <?php echo $character->id_personnage ?>
                             });
                     } else {
                         character.attaque = parseInt(character.attaque) + parseInt(attInv);
@@ -192,10 +189,7 @@ require 'php/getCharacter.php';
                     $.ajax({
                                 url : 'php/equip_item.php', // La ressource ciblée
                                 type : 'POST', // Le type de la requête HTTP.
-                                data : 'id_inventaire=' + id_item + '&id_personnage='+ <?php echo $character->id_personnage ?>,
-                                success : function(code_html, statut){ // code_html contient le HTML renvoyé
-                                    alert(code_html);
-                                }
+                                data : 'id_inventaire=' + id_item + '&id_personnage='+ <?php echo $character->id_personnage ?>
                             });
                     console.log("toto");
                     $("#inventory").find(".row").append(charItem);
@@ -241,10 +235,7 @@ require 'php/getCharacter.php';
             $.ajax({
                                 url : 'php/unequip_item.php', // La ressource ciblée
                                 type : 'POST', // Le type de la requête HTTP.
-                                data : 'id_inventaire=' + item.data('id') + '&id_personnage='+ <?php echo $character->id_personnage ?>,
-                                success : function(code_html, statut){ // code_html contient le HTML renvoyé
-                                    alert(code_html);
-                                }
+                                data : 'id_inventaire=' + item.data('id') + '&id_personnage='+ <?php echo $character->id_personnage ?>
                             });
 
         })

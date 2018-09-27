@@ -656,7 +656,8 @@ a:hover {
 
 #inventory {
     max-height: 400px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #inventoryDrop {
@@ -731,5 +732,137 @@ body {
         margin-top: 900px;
     }
 }
+/******* Campagne *******/
+.btn_cmp{
+    width: auto;
+    text-align: center;
+    font-size: 18px;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    border-radius: 0px;
+    line-height: 50px;
+    font-weight: bold;
+    display: block;
+    margin: auto;   
+}
 
+
+.support{
+    background-color: #714518;
+    border: 5px solid #4c3012;
+    border-radius: 2px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0px;   
+}
+
+.support-fond{
+    margin: 10px;
+    background-color: #E8D4A1;
+} 
+
+.nav-niv{
+    margin: 0 auto;
+    background-color: #714518;
+    border: 5px solid #4c3012;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.li-niv{
+    margin: 10px;
+    padding: 0px;
+    width: 50px;
+}
+
+.a-niv{
+    margin-right: 0px;
+    background-image: url(../img/baseBtnSmall.png);
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #60a20b;
+    font-size: 18px;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    border-radius: 0px;
+}
+
+.a-niv:not(:disabled):not(.disabled).active,
+.a-niv:not(:disabled):not(.disabled):active,
+.a-niv:focus,
+.a-niv:hover {
+    background-image: url(../img/baseBtnSmallActive.png);
+    outline: none;
+    background-color: transparent;
+    color: #60a20b;
+    font-size: 18px;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    border-radius: 0px;
+}
+
+.row-carte{
+    margin: 0px;
+}
+
+.carte-bordure{
+    background-color: #714518;
+    border: 5px solid #4c3012;
+    border-radius: 2px;
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: inherit;
+    margin: 0px;
+}
+
+.carte{
+    background-image: url(../img/grass_texture242.jpg);
+    width: 100%;
+}
+
+.carte-support{
+    width: 100%;
+    padding: 2%;
+}
+
+.element-arbre{
+        
+    background-image: url(../img/Tree_2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 120px;
+    position: relative;
+}
+
+.niv-home{
+    background-image: url(../img/baseBtnSmall.png);
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 44px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 88px;
+    left: 0px;
+}
+
+.element-ligne{
+   background-image: url(../img/woodBar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.element-ligne-horizontal{
+    background-image: url(../img/woodBar1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 /*end Rain*/

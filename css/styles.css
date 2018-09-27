@@ -364,6 +364,11 @@ a:hover {
     border-radius: 4px;
 }
 
+.characterCell > .itemCell {
+    background-color: transparent;
+    margin-left: -15px !important;
+}
+
 .statsItem {
     background-image: url(../img/woodBar.png);
     background-size: cover;
@@ -653,7 +658,8 @@ a:hover {
     background-repeat: no-repeat;
     background-position: center;
 }
-.winBox{
+
+.winBox {
     text-align: center;
 }
 
@@ -735,11 +741,13 @@ a:hover {
         margin-top: 900px;
     }
 }
+
 /******* Campagne *******/
-#pills-tab{
+#pills-tab {
     position: fixed
 }
-.btn_cmp{
+
+.btn_cmp {
     width: auto;
     text-align: center;
     font-size: 18px;
@@ -748,25 +756,25 @@ a:hover {
     line-height: 50px;
     font-weight: bold;
     display: block;
-    margin: auto;   
+    margin: auto;
 }
 
 
-.support{
+.support {
     background-color: #714518;
     border: 5px solid #4c3012;
     border-radius: 2px;
     margin-left: 10%;
     margin-right: 10%;
-    padding: 0px;   
+    padding: 0px;
 }
 
-.support-fond{
+.support-fond {
     margin: 10px;
     background-color: #E8D4A1;
-} 
+}
 
-.nav-niv{
+.nav-niv {
     margin: 0 auto;
     background-color: #714518;
     border: 5px solid #4c3012;
@@ -774,13 +782,13 @@ a:hover {
     margin-bottom: 15px;
 }
 
-.li-niv{
+.li-niv {
     margin: 10px;
     padding: 0px;
     width: 50px;
 }
 
-.a-niv{
+.a-niv {
     margin-right: 0px;
     background-image: url(../img/baseBtnSmall.png);
     background-size: contain;
@@ -806,11 +814,11 @@ a:hover {
     border-radius: 0px;
 }
 
-.row-carte{
+.row-carte {
     margin: 0px;
 }
 
-.carte-bordure{
+.carte-bordure {
     background-color: #714518;
     border: 5px solid #4c3012;
     border-radius: 2px;
@@ -821,17 +829,17 @@ a:hover {
     margin: 0px;
 }
 
-.carte{
+.carte {
     background-image: url(../img/grass_texture242.jpg);
     width: 100%;
 }
 
-.carte-support{
+.carte-support {
     width: 100%;
     padding: 2%;
 }
 
-.element-arbre{
+.element-arbre {
     background-image: url(../img/Tree_2.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -840,7 +848,7 @@ a:hover {
     position: relative;
 }
 
-.niv-home{
+.niv-home {
     background-image: url(../img/baseBtnSmall.png);
     background-size: contain;
     background-color: transparent;
@@ -854,7 +862,7 @@ a:hover {
     left: 0px;
 }
 
-.niv-home:hover{
+.niv-home:hover {
     background-image: url(../img/baseBtnSmallActive.png);
     background-size: contain;
     background-color: transparent;
@@ -868,14 +876,14 @@ a:hover {
     left: 0px;
 }
 
-.element-ligne{
-   background-image: url(../img/woodBar.png);
+.element-ligne {
+    background-image: url(../img/woodBar.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.element-ligne-horizontal{
+.element-ligne-horizontal {
     background-image: url(../img/woodBar1.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -884,13 +892,14 @@ a:hover {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 /*end Rain*/
 
-#cutSound{
+#cutSound {
     width: 50px;
     height: 50px;
     background-image: url(../img/speaker.png);
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
@@ -901,9 +910,11 @@ a:hover {
     top: 150px;
     left: 50px;
     z-index: 99999999999;
-     transition: 0.4s;
+    transition: 0.4s;
 }
-#cutSound:active,#cutSound:hover{
+
+#cutSound:active,
+#cutSound:hover {
     transition: 0.4s;
     background-image: url(../img/speakerDisable.png);
 }
@@ -919,20 +930,21 @@ a:hover {
 ::-webkit-scrollbar-track {
     background: #ffebb9;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #b79e60; 
+    background: #b79e60;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
 }
+
 /*end scrollbar*/
 
-#stageLvl{
-    background-color: rgba(0,0,0,0.7);
+#stageLvl {
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     text-shadow: none;
     width: 100px;

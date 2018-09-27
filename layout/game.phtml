@@ -58,61 +58,60 @@ var_dump($equipement);*/
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
-    function endGame(end_game)
-    {
+
+    function endGame(end_game) {
         var id_campagne = <?php echo $manche->id_campagne?>;
         window.location.replace('Co.php?page=endgame&end_game=' + end_game + "&id_campagne=" + id_campagne);
     }
 
     function bataille(type_j) {
+        $("#enemyCharacter").removeClass("apply-shake");
+        $("#playerCharacter").removeClass("apply-shake");
+        $("#playerCharacter").removeClass("knightAttack");
         var type = ['pierre', 'feuille', 'ciseaux'];
         var type_e = getRandomInt(3);
         var div_txt = document.getElementById("txt_bataille");
         div_txt.innerHTML += "Vous avez fait " + type[type_j] + "</br>";
         div_txt.innerHTML += "Votre ennemi a fait " + type[type_e] + "</br>";
-        $("#playerAttack").attr("src","img/"+type[type_j]+".png");
-        $("#enemiAttack").attr("src","img/"+type[type_e]+".png");
-        $("#enemyCharacter").removeClass("apply-shake");
-        $("#playerCharacter").removeClass("apply-shake");
+        $("#playerAttack").attr("src", "img/" + type[type_j] + ".png");
+        $("#enemiAttack").attr("src", "img/" + type[type_e] + ".png");
+
         var rslt;
         if (type_e == type_j) {
             rslt = 0;
             div_txt.innerHTML += "Egaliter !</br>";
-            if (perso.goAttaque(ennemi, 1, div_txt) == false)
-            {
+
+            $("#playerCharacter").addClass("apply-shake");
+            $("#enemyCharacter").addClass("apply-shake");
+            if (perso.goAttaque(ennemi, 1, div_txt) == false) {
                 endGame(1);
             }
-            if (ennemi.goAttaque(perso, 1, div_txt) == false)
-            {
+            if (ennemi.goAttaque(perso, 1, div_txt) == false) {
                 endGame(0);
             }
-        }
-        else if ((type_e + 1) % 3 == type_j)
-        {
+        } else if ((type_e + 1) % 3 == type_j) {
             rslt = 1;
             div_txt.innerHTML += "Vous avez gagné !</br>";
+            $("#playerCharacter").addClass("knightAttack");
             $("#enemyCharacter").addClass("apply-shake");
-            
-            if (perso.goAttaque(ennemi, 1, div_txt) == false)
-            {
+
+            if (perso.goAttaque(ennemi, 1, div_txt) == false) {
                 endGame(1);
             }
-        }
-        else
-        {
+        } else {
             rslt = 2;
             div_txt.innerHTML += "Vous avez perdu !</br>";
             $("#playerCharacter").addClass("apply-shake");
-            
-            if (ennemi.goAttaque(perso, 1, div_txt) == false)
-            {
+
+            if (ennemi.goAttaque(perso, 1, div_txt) == false) {
                 endGame(0);
             }
         }
-        
+
     }
 </script>
 <div class="row">
+    <section class="rain"></section>
     <div id="game" class="container-fluid">
         <?php include "header.phtml"; ?>
         <div class="row d-flex justify-content-center">
@@ -125,18 +124,27 @@ var_dump($equipement);*/
                         </div>
                     </div>
                 </div>
+                <!--
                 <img id="playerCharacter" class="battleCharacter" src="/MiniBoys/img/guerrier.png" alt="">
+-->
+                <div id="playerCharacter" class="knight"><div class="knightHeal"></div></div>
                 <img class="platformImg" src="/MiniBoys/img/platformGreen.png" alt="">
                 <div class="row d-flex justify-content-center align-items-center inGameStatsContainer">
-                    <div class="col-4 inGameStats">Lvl :  <?php echo $character->level ?>  </div>
-                    <div class="col-4 inGameStats">Attaque : <?php echo $character->attaque ?>  </div>
-                    <div class="col-4 inGameStats">Défense :  <?php echo $character->defense ?></div>
+                    <div class="col-4 inGameStats">Lvl :
+                        <?php echo $character->level ?>
+                    </div>
+                    <div class="col-4 inGameStats">Attaque :
+                        <?php echo $character->attaque ?>
+                    </div>
+                    <div class="col-4 inGameStats">Défense :
+                        <?php echo $character->defense ?>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-2  m-2 vs d-flex justify-content-center align-items-center">
-               <div class="attack">
-                   <img id="playerAttack" class="img-fluid" src="" alt="">
-               </div>
+                <div class="attack">
+                    <img id="playerAttack" class="img-fluid" src="" alt="">
+                </div>
                 <div class="attack vsIcon">
                     <img class="img-fluid" src="img/vs.png" alt="">
                 </div>
@@ -155,15 +163,19 @@ var_dump($equipement);*/
                 </div>
                 <img id="enemyCharacter" class="battleCharacter" src="/MiniBoys/img/spider2.png" alt="">
                 <img class="platformImg" src="/MiniBoys/img/platformGreen.png" alt="">
-                 <div class="row d-flex justify-content-center align-items-center inGameStatsContainer">
+                <div class="row d-flex justify-content-center align-items-center inGameStatsContainer">
 
-                    <div class="col-6 inGameStats">Attaque : <?php echo $ennemi->attaque ?>  </div>
-                    <div class="col-6 inGameStats">Défense :  <?php echo $ennemi->defense ?></div>
+                    <div class="col-6 inGameStats">Attaque :
+                        <?php echo $ennemi->attaque ?>
+                    </div>
+                    <div class="col-6 inGameStats">Défense :
+                        <?php echo $ennemi->defense ?>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row fixed-bottom txtBattleContainer">
-           
+
             <div class="battleBtnContainer row d-flex justify-content-center">
                 <button id="rock" class="battleBtn" onclick="bataille(0);"></button>
                 <button id="leaf" class="battleBtn" onclick="bataille(1);"></button>
@@ -178,9 +190,9 @@ var_dump($equipement);*/
 </div>
 <audio id="my_audio" src="sound/battle.mp3" autoplay="true"></audio>
 <script type="text/javascript">
-        $(document).ready(function() {
-            $("#my_audio").get(0).play();
-        });
+    $(document).ready(function() {
+        $("#my_audio").get(0).play();
+    });
 
     function autoScrollOnclickBtn() {
         $(".battleBtn").click(function() {
@@ -192,11 +204,37 @@ var_dump($equipement);*/
 
     function animateLifeBar() {
         $(".battleBtn").click(function() {
-            $(".playerLifeBar").animate({width: perso.current_vie+'%'});
-            $(".enemiLifeBar").animate({width: ennemi.current_vie+'%'});
+            $(".playerLifeBar").animate({
+                width: perso.current_vie + '%'
+            });
+            $(".enemiLifeBar").animate({
+                width: ennemi.current_vie + '%'
+            });
         });
     }
+    // number of drops created.
+    var nbDrop = 80;
 
+    // function to generate a random number range.
+    function randRange(minNum, maxNum) {
+        return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+    }
+
+    // function to generate drops
+    function createRain() {
+
+        for (i = 1; i < nbDrop; i++) {
+            var dropLeft = randRange(0, 1600);
+            var dropTop = randRange(-1000, 1400);
+
+            $('.rain').append('<div class="drop" id="drop' + i + '"></div>');
+            $('#drop' + i).css('left', dropLeft);
+            $('#drop' + i).css('top', dropTop);
+        }
+
+    }
+    // Make it rain
+    createRain();
     autoScrollOnclickBtn();
     animateLifeBar();
 </script>

@@ -123,6 +123,11 @@ require 'php/getCharacter.php';
             var vieInv = $(this).data("vie");
             if ($(this).hasClass("trashableItem")) {
                 $(this).addClass("selectedTrashableItem");
+                $(".itemCell").click(function(){
+                   if($(this).hasClass("selectedTrashableItem")){
+                       $(this).removeClass("selectedTrashableItem");
+                   } 
+                });
                 $(".validate").click(function(){
                     $(".itemCell").each(function(){
                          if($(this).hasClass("selectedTrashableItem")){
@@ -215,19 +220,16 @@ require 'php/getCharacter.php';
             $(".validate").css("display", "inline-block");
             $(".cancel").css("display", "inline-block");
             $(".itemCell").addClass("trashableItem");
-            trashOrNot = !trashOrNot;
         });
         $(".validate").click(function() {
             $(".validate").css("display", "none");
             $(".cancel").css("display", "none");
             $(".itemCell").removeClass("trashableItem");
-            trashOrNot = !trashOrNot;
         });
         $(".cancel").click(function() {
             $(".validate").css("display", "none");
             $(".cancel").css("display", "none");
             $(".itemCell").removeClass("trashableItem");
-            trashOrNot = !trashOrNot;
         });
 
     }

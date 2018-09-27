@@ -225,7 +225,8 @@ input[type="text"] {
 }
 
 #character,
-#game,#endGame {
+#game,
+#endGame {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
     background-blend-mode: multiply, multiply;
     min-height: 100vh;
@@ -241,12 +242,15 @@ input[type="text"] {
 #menu .btn {
     margin: 0;
 }
-.btn{
+
+.btn {
     transition: 0.4s;
 }
-.btn:hover{
+
+.btn:hover {
     transition: 0.4s;
 }
+
 .off {
     position: absolute;
     right: 0;
@@ -293,16 +297,19 @@ a:hover {
     margin: 20px;
     border-radius: 4px;
 }
-.trashableItem{
+
+.trashableItem {
     -webkit-animation: trashable 0.1s ease-in-out 0.1s infinite alternate;
 }
-.selectedTrashableItem{
+
+.selectedTrashableItem {
     animation: none;
-    background-color: red;
+    background-color: #d42f2f;
 }
-.trash{
+
+.trash {
     display: inline-block;
-    cursor:pointer;
+    cursor: pointer;
     width: 30px;
     height: 30px;
     background-image: url(../img/trash.png);
@@ -310,13 +317,15 @@ a:hover {
     background-repeat: no-repeat;
     background-position: left;
 }
-.trash:hover{
+
+.trash:hover {
     background-image: url(../img/trashHover.png);
 }
-.validate{
+
+.validate {
     transition: 0.5s;
     display: none;
-    cursor:pointer;
+    cursor: pointer;
     width: 30px;
     height: 30px;
     background-image: url(../img/validate.png);
@@ -324,12 +333,14 @@ a:hover {
     background-repeat: no-repeat;
     background-position: left;
 }
-.validate:hover{
+
+.validate:hover {
     background-image: url(../img/validateHover.png);
 }
-.cancel{
+
+.cancel {
     display: none;
-    cursor:pointer;
+    cursor: pointer;
     width: 30px;
     height: 30px;
     background-image: url(../img/cancel.png);
@@ -337,9 +348,11 @@ a:hover {
     background-repeat: no-repeat;
     background-position: left;
 }
-.cancel:hover{
+
+.cancel:hover {
     background-image: url(../img/cancelHover.png);
 }
+
 .characterCell {
     min-height: 50px;
     background-position: center;
@@ -572,21 +585,25 @@ a:hover {
     right: 0;
     margin: auto;
 }
-.vsIcon{
+
+.vsIcon {
     width: 100px;
     height: 100px;
 }
+
 /*keyframe*/
 @-webkit-keyframes trashable {
- from {
-    -webkit-transform: rotate(2deg);
- }
- to {
-   -webkit-transform-origin:center center;
-   -webkit-transform: rotate(-2deg);
- }
+    from {
+        -webkit-transform: rotate(2deg);
+    }
+
+    to {
+        -webkit-transform-origin: center center;
+        -webkit-transform: rotate(-2deg);
+    }
 
 }
+
 @keyframes shake {
 
     10%,
@@ -621,12 +638,13 @@ a:hover {
 
 /*endgame*/
 
-.endGameTitle{
+.endGameTitle {
     font-size: 50px;
     color: white;
     margin-bottom: 150px;
 }
-.win{
+
+.win {
     width: auto;
     height: 220px;
     margin-top: -185px;
@@ -635,6 +653,83 @@ a:hover {
     background-repeat: no-repeat;
     background-position: center;
 }
-#inventoryDrop{
+
+#inventory {
+    max-height: 400px;
+    overflow: auto;
+}
+
+#inventoryDrop {
     display: none;
 }
+
+/*animation*/
+.knight {
+    background: url('../img/guerrier.png') left center;
+    width: auto;
+    height: 100px;
+    width: 100px;
+    margin-top: 50px;
+    right: 80px;
+    z-index: 9999;
+    position: absolute;
+}
+
+.knightAttack {
+    animation: knightAttack 0.6s steps(7);
+    background-size: auto;
+    background: url('../img/knightAttack.png') left center;
+}
+
+.knightHurt {
+    animation: knightHurt 0.4s steps(7);
+
+    background: url('../img/knightHurt.png') left center;
+
+}
+
+@keyframes knightAttack {
+    100% {
+        background-position: -714px;
+    }
+}
+
+@keyframes knightHurt {
+    100% {
+        background-position: -855px;
+    }
+}
+
+/*rain*/
+body {
+    overflow: hidden;
+}
+
+
+.drop {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)), to(rgba(255, 255, 255, 0.6)));
+    background: -moz-linear-gradient(top, rgba(13, 52, 58, 1) 0%, rgba(255, 255, 255, .6) 100%);
+    width: 1px;
+    height: 89px;
+    position: absolute;
+    bottom: 200px;
+    z-index: 0;
+    -webkit-animation: fall .90s linear infinite;
+    -moz-animation: fall .90s linear infinite;
+
+}
+
+/* animate the drops*/
+@-webkit-keyframes fall {
+    to {
+        margin-top: 900px;
+    }
+}
+
+@-moz-keyframes fall {
+    to {
+        margin-top: 900px;
+    }
+}
+
+/*end Rain*/

@@ -656,7 +656,8 @@ a:hover {
 
 #inventory {
     max-height: 400px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #inventoryDrop {

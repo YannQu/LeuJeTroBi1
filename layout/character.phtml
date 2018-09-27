@@ -4,12 +4,11 @@ require 'php/getCharacter.php';
 
 
 <div class="row">
+                   
     <div id="character" class="container-fluid">
 
-
-
         <div class="row d-flex justify-content-center">
-            <?php include "header.phtml" ?>
+   <?php include "header.phtml" ?>
             <div id="statsChar " class="col-lg-3 col-md-8 col-sm-8 m-2 box">
                 <h2>Stats</h2>
                 <div class="statsItem">
@@ -49,7 +48,7 @@ require 'php/getCharacter.php';
                 <div class="row d-flex justify-content-center">
                     <div id="boots" class="col-lg-2 characterCell m-2 characterLeg"></div>
                 </div>
-                <a id="" class="btn-default btn" onclick="validerEquip()">Valider équipement</a>
+                <a id="" class="btn-default btn" onclick="validerEquip()">Valider</a>
             </div>
 
             <div id="inventory" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
@@ -239,6 +238,7 @@ require 'php/getCharacter.php';
             $(".itemCell").removeClass("trashableItem");
         });
         $(".selectedTrashableItem").click(function() {
+
             console.log("selectedTrashableItem");
         });
 

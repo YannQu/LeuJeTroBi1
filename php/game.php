@@ -9,9 +9,9 @@ $req->execute(['id_user' => $user->id_utilisateur]);
 $character = $req->fetch(PDO::FETCH_OBJ);
 
 $niveau_manche = 1;
-if (isset($_POST['niveau_manche']))
+if (isset($_GET['niveau_manche']))
 {
-    $niveau_manche = $_POST['niveau_manche'];
+    $niveau_manche = $_GET['niveau_manche'];
 }
 $req = $pdo->prepare('SELECT * FROM campagne WHERE niveau = :niveau_manche');
 $req->execute(['niveau_manche' => $niveau_manche]);

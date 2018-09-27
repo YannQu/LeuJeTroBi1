@@ -8,7 +8,7 @@ $req = $pdo->prepare('SELECT * FROM personnage WHERE id_utilisateur = :id_user')
 $req->execute(['id_user' => $user->id_utilisateur]);
 $character = $req->fetch(PDO::FETCH_OBJ);
 //var_dump($character);
-$req = $pdo->prepare('SELECT * FROM campagne AS c LEFT JOIN campagne_joueur AS cj ON c.id_campagne = cj.id_campagne WHERE cj.id_personnage = :id_user');
+$req = $pdo->prepare('SELECT * FROM campagne AS c INNER JOIN campagne_joueur AS cj ON c.id_campagne = cj.id_campagne WHERE cj.id_personnage = :id_user');
 $req->execute(['id_user' => $character->id_personnage]);
 $detailsCJ = $req->fetchAll(PDO::FETCH_OBJ);
 

@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS `equipement` (
   `critique` int(11) NOT NULL,
   `level_min` int(11) NOT NULL,
   `pour_loot` int(11) NOT NULL,
+  `equipe` boolean NOT NULL DEFAULT FALSE,
   `img` varchar(200) NOT NULL,
   PRIMARY KEY (`id_equipement`),
   UNIQUE KEY `nom_equipement` (`nom_equipement`)
@@ -97,13 +98,15 @@ CREATE TABLE IF NOT EXISTS `equipement` (
 -- Déchargement des données de la table `equipement`
 --
 
-INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`, `img`) VALUES
-(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50, '3_sword_.png.png'),
-(2, 1, 'casque coccinelle', 1, 3, 5, 2, 1, 60, '3_head_.png'),
-(3, 2, 'armure de coccinelle', 1, 5, 10, 5, 2, 40, '1_body_.png'),
-(4, 3, 'bottes de coccinnelle', 2, 3, 20, 15, 3, 45, '1_left lag_.png'),
-(5, 4, 'bouclier de coccinelle', 0, 10, 20, 30, 4, 25, '3_shield_.png'),
-(6, 0, 'bite énorme', 1000, 0, 0, 90, 1, 50, '3_sword_.png.png');
+INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`, `equipe`, `img`) VALUES
+(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50, FALSE, '3_sword_.png'),
+(2, 1, 'casque coccinelle', 1, 3, 5, 2, 1, 60, FALSE, '3_head_.png'),
+(3, 2, 'armure de coccinelle', 1, 5, 10, 5, 2, 40, FALSE, '1_body_.png'),
+(4, 3, 'bottes de coccinnelle', 2, 3, 20, 15, 3, 45, FALSE, '1_left lag_.png'),
+(5, 4, 'bouclier de coccinelle', 0, 10, 20, 30, 4, 25, FALSE, '3_shield_.png'),
+(6, 0, 'baton de marche de vieux', 20, 0, 0, 90, 1, 50, FALSE, '1_spear_.png'),
+(7, 0, 'pourfendeur de juifs', 50, 0, 0, 10, 1, 50, FALSE, '2_ax.png'),
+(8, 0, 'dildonator 3000', 1000, 0, 0, 90, 1, 50, FALSE, '1_stick.png');
 
 -- --------------------------------------------------------
 
@@ -126,7 +129,10 @@ INSERT INTO `inventaire` (`id_inventaire`, `id_personnage`, `id_equipement`) VAL
 (2, 1, 2),
 (3, 1, 3),
 (4, 1, 4),
-(5, 1, 5);
+(5, 1, 5),
+(6, 1, 6),
+(7, 1, 7),
+(8, 1, 8);
 
 -- --------------------------------------------------------
 

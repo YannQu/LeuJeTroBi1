@@ -2,9 +2,9 @@
 //$param = $_GET['insc'];
 if (isset($_GET['insc']) && $_GET['insc'] == 'yes') {
 	$template = 'createChar';
-}else if(isset($_GET['cmpgn']) && $_GET['cmpgn'] == "yes"){
+}else if(isset($_GET['page']) && $_GET['page'] == "cmpgn"){
 	$template = 'game';
-}else if(isset($_GET['endgame']) && $_GET['endgame'] == "yes"){
+}else if(isset($_GET['page']) && $_GET['page'] == "endgame"){
 	$template = 'endgame';
 }else{
 	$template = 'character';

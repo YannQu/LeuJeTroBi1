@@ -2,6 +2,7 @@
 require 'php/endgame.php';
 $cmpt=0;
 ?>
+<<<<<<< HEAD
 <?php include "header.phtml" ?>
 <div><?php echo $msg_end_game ?></div>
 <?php if ($end_game != 0) {?>
@@ -47,10 +48,90 @@ $cmpt=0;
 
     <?php $cmpt += 1; } ?>
 </div>
+=======
 
+<div class="row">
+    <div id="endGame" class="container-fluid">
+        <div class="row ">
+            <?php include "header.phtml" ?>
+            <div class="col-12">
+                <div class="row d-flex justify-content-center">
+                    <h2 class="endGameTitle">
+                        <?php echo $msg_end_game ?>
+                    </h2>
+                </div>
+                <?php if ($end_game==1) {?>
+                    <audio id="my_audio" src="sound/drop.mp3" autoplay="true"></audio>
+                    <div class="row d-flex justify-content-center">
+                        <div id="inventoryDrop" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
+                            <div class="win"></div>
+                            <h2>Drop</h2>
+                            <div class="row d-flex justify-content-center">
+                                <?php foreach ($item_droper as $i){ ?>
+                                <div data-item="<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1">
+                                    <img class="itemImg" src="img/<?php echo  $i->img ?>">
+                                    <div id="overlay<?php echo  $cmpt ?>" class="overlay">
+                                        <div>
+                                            <h3>
+                                                <?php echo  $i->nom_equipement ?>
+                                            </h3>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <h3>Level : <span>
+                                                        <?php echo  $i->level_min ?></span></h3>
+                                            </div>
+                                            <div>
+                                                <h3>Attaque :
+                                                    <?php echo  $i->attaque ?>
+                                                </h3>
+                                            </div>
+                                            <div>
+                                                <h3>Defense : <span>
+                                                        <?php echo  $i->defense ?></span></h3>
+                                            </div>
+                                            <div>
+                                                <h3>Critique :
+                                                    <?php echo  $i->critique ?>
+                                                </h3>
+                                            </div>
+                                            <div>
+                                                <h3>Vie :
+                                                    <?php echo  $i->vie ?>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php $cmpt += 1; } ?>
+                            </div>
+
+                        </div>
+                    </div>
+                <?php }else{ ?>
+                    <audio id="my_audio" src="sound/SadViolin.mp3" autoplay="true"></audio>
+                    <div class="row d-flex justify-content-center">
+                        <div id="inventoryDrop" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
+                            <div class="win"></div>
+                            <h2>Looser</h2>
+                        </div>
+                    </div>
+                <?php } ?>
+                <a href="Co.php?page=cmpgn" class="btn-default btn">Rejouer</a>
             </div>
 
-            <script type="text/javascript">
+        </div>
+    </div>
+
+>>>>>>> 2f1c70c2383c174a75b9273962d735f6ed9cc63e
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#my_audio").get(0).play();
+        $("#inventoryDrop").fadeIn(2000);
+    });
+
     function showOverlay() {
         $(".itemCell").hover(function() {
             $(this).children().show();
@@ -59,7 +140,13 @@ $cmpt=0;
             $(this).children(".overlay").hide();
         });
     }
+<<<<<<< HEAD
     
     showOverlay();  
     </script>
     <?php } ?>
+=======
+
+    showOverlay();
+</script>
+>>>>>>> 2f1c70c2383c174a75b9273962d735f6ed9cc63e

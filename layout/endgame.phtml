@@ -61,7 +61,15 @@ $cmpt=0;
 
                         </div>
                     </div>
-                <?php }else{ ?>
+                <?php
+            echo "Vous avez gagnez ".$xp_gagne." xp<br>";
+            if ($up == true)
+            {
+                echo "Bravo vous avez up au niveau ".$niveau."<br>";
+            }
+            echo "level ".$niveau."<br>";
+            echo $xp_perso."/".$nb_xp_by_niv."<br>";
+            }else{ ?>
                     <audio id="my_audio" src="sound/SadViolin.mp3" autoplay="true"></audio>
                     <div class="row d-flex justify-content-center">
                         <div id="inventoryDrop" class="col-lg-3 col-md-8 col-sm-8 m-2 box">

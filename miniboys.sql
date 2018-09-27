@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 25 sep. 2018 à 09:02
+-- Généré le :  jeu. 27 sep. 2018 à 11:32
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -50,6 +50,30 @@ INSERT INTO `campagne` (`id_campagne`, `xp_gagne`, `niveau`, `id_ennemi`, `resol
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `campagne_joueur`
+--
+
+DROP TABLE IF EXISTS `campagne_joueur`;
+CREATE TABLE IF NOT EXISTS `campagne_joueur` (
+  `id_campagne_joueur` int(11) NOT NULL AUTO_INCREMENT,
+  `is_resolut` tinyint(1) NOT NULL,
+  `id_campagne` int(11) NOT NULL,
+  `id_personnage` int(11) NOT NULL,
+  PRIMARY KEY (`id_campagne_joueur`),
+  KEY `campagne_joueur_campagne0_FK` (`id_campagne`),
+  KEY `campagne_joueur_personnage1_FK` (`id_personnage`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `campagne_joueur`
+--
+
+INSERT INTO `campagne_joueur` (`id_campagne_joueur`, `is_resolut`, `id_campagne`, `id_personnage`) VALUES
+(1, 0, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `ennemi`
 --
 
@@ -88,25 +112,24 @@ CREATE TABLE IF NOT EXISTS `equipement` (
   `critique` int(11) NOT NULL,
   `level_min` int(11) NOT NULL,
   `pour_loot` int(11) NOT NULL,
-  `equipe` boolean NOT NULL DEFAULT FALSE,
   `img` varchar(200) NOT NULL,
   PRIMARY KEY (`id_equipement`),
   UNIQUE KEY `nom_equipement` (`nom_equipement`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `equipement`
 --
 
-INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`, `equipe`, `img`) VALUES
-(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50, FALSE, '3_sword_.png'),
-(2, 1, 'casque coccinelle', 1, 3, 5, 2, 1, 60, FALSE, '3_head_.png'),
-(3, 2, 'armure de coccinelle', 1, 5, 10, 5, 2, 40, FALSE, '1_body_.png'),
-(4, 3, 'bottes de coccinnelle', 2, 3, 20, 15, 3, 45, FALSE, '1_left lag_.png'),
-(5, 4, 'bouclier de coccinelle', 0, 10, 20, 30, 4, 25, FALSE, '3_shield_.png'),
-(6, 0, 'baton de marche de vieux', 20, 0, 0, 90, 1, 50, FALSE, '1_spear_.png'),
-(7, 0, 'pourfendeur de juifs', 50, 0, 0, 10, 1, 50, FALSE, '2_ax.png'),
-(8, 0, 'dildonator 3000', 1000, 0, 0, 90, 1, 50, FALSE, '1_stick.png');
+INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`, `img`) VALUES
+(1, 0, 'épée coccinelle', 2, 0, 0, 0, 1, 50, '3_sword_.png'),
+(2, 1, 'casque coccinelle', 1, 3, 5, 2, 1, 60, '3_head_.png'),
+(3, 2, 'armure de coccinelle', 1, 5, 10, 5, 2, 40, '1_body_.png'),
+(4, 3, 'bottes de coccinnelle', 2, 3, 20, 15, 3, 45, '1_left lag_.png'),
+(5, 4, 'bouclier de coccinelle', 0, 10, 20, 30, 4, 25, '3_shield_.png'),
+(6, 0, 'baton de marche de vieux', 20, 0, 0, 90, 1, 50, '1_spear_.png'),
+(7, 0, 'pourfendeur de juifs', 50, 0, 0, 10, 1, 50, '2_ax.png'),
+(8, 0, 'dildonator 3000', 1000, 0, 0, 90, 1, 50, '1_stick.png');
 
 -- --------------------------------------------------------
 
@@ -119,20 +142,25 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
   `id_inventaire` int(11) NOT NULL AUTO_INCREMENT,
   `id_personnage` int(11) NOT NULL,
   `id_equipement` int(11) NOT NULL,
+  `is_equip` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_inventaire`),
   KEY `inventaire_personnage0_FK` (`id_personnage`),
   KEY `inventaire_equipement1_FK` (`id_equipement`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
-INSERT INTO `inventaire` (`id_inventaire`, `id_personnage`, `id_equipement`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 1, 4),
-(5, 1, 5),
-(6, 1, 6),
-(7, 1, 7),
-(8, 1, 8);
+--
+-- Déchargement des données de la table `inventaire`
+--
+
+INSERT INTO `inventaire` (`id_inventaire`, `id_personnage`, `id_equipement`, `is_equip`) VALUES
+(1, 1, 1, 0),
+(2, 1, 2, 0),
+(3, 1, 3, 0),
+(4, 1, 4, 0),
+(5, 1, 5, 0),
+(6, 1, 6, 0),
+(7, 1, 7, 0),
+(8, 1, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -215,6 +243,13 @@ INSERT INTO `users` (`id_utilisateur`, `password`, `username`, `email`) VALUES
 --
 ALTER TABLE `campagne`
   ADD CONSTRAINT `campagne_ennemi0_FK` FOREIGN KEY (`id_ennemi`) REFERENCES `ennemi` (`id_ennemi`);
+
+--
+-- Contraintes pour la table `campagne_joueur`
+--
+ALTER TABLE `campagne_joueur`
+  ADD CONSTRAINT `campagne_joueur_campagne0_FK` FOREIGN KEY (`id_campagne`) REFERENCES `campagne` (`id_campagne`),
+  ADD CONSTRAINT `campagne_joueur_personnage1_FK` FOREIGN KEY (`id_personnage`) REFERENCES `personnage` (`id_personnage`);
 
 --
 -- Contraintes pour la table `inventaire`

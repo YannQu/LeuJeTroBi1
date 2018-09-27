@@ -65,6 +65,12 @@ var_dump($equipement);*/
     }
 
     function bataille(type_j) {
+        if( $("#playerCharacter").hasClass("knightAttack")){
+            $(this).removeClass("knightAttack");
+        }
+       if( $("#playerCharacter").hasClass("apply-shake")){
+            $(this).removeClass("apply-shake");
+        }
         $("#enemyCharacter").removeClass("apply-shake");
         $("#playerCharacter").removeClass("apply-shake");
         $("#playerCharacter").removeClass("knightAttack");

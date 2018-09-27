@@ -57,7 +57,7 @@ require 'php/getCharacter.php';
                 <div class="cancel"></div>
                 <div class="row d-flex justify-content-center">
                     <?php foreach ($detailsInv as $i){ ?>
-                    <div class="col-lg-3 itemCell m-1" data-id="<?php echo $i->id_inventaire ?>" data-item="<?php echo $i->type_equipement ?>" data-level="<?php echo $i->level_min ?>" data-attaque="<?php echo $i->attaque ?>" data-defense="<?php echo $i->defense ?>" data-critique="<?php echo $i->critique ?>" data-vie="<?php echo $i->vie ?>">
+                    <div class="col-lg-3 itemCell m-1" data-id="<?php echo $i->id_inventaire ?>" data-is_equip="<?php echo $i->is_equip ?>" data-item="<?php echo $i->type_equipement ?>" data-level="<?php echo $i->level_min ?>" data-attaque="<?php echo $i->attaque ?>" data-defense="<?php echo $i->defense ?>" data-critique="<?php echo $i->critique ?>" data-vie="<?php echo $i->vie ?>">
                         <img class="itemImg" src="img/<?php echo  $i->img ?>">
                         <div id="overlay<?php echo  $cmpt ?>" class="overlay">
                             <div>
@@ -120,6 +120,8 @@ require 'php/getCharacter.php';
             var critInv = $(this).data("critique");
             var lvlInv = $(this).data("level");
             var vieInv = $(this).data("vie");
+            var id_item = $(this).data("id");
+            var is_equip = $(this).data("is_equip");
 
             if ($(this).hasClass("trashableItem") && !$(this).hasClass("selectedTrashableItem")) {
                 $(this).addClass("selectedTrashableItem");
@@ -147,7 +149,7 @@ require 'php/getCharacter.php';
             } else if ($(this).hasClass("trashableItem") && $(this).hasClass("selectedTrashableItem")) {
                 $(this).removeClass("selectedTrashableItem");
             } else {
-                if (lvlInv <= character.level) {
+                if (lvlInv <= character.level && is_equip == 0) {
                     if (itemType == 0) {
                         var charItem = $("#sword").children(".itemCell");
                     } else if (itemType == 1) {
@@ -164,19 +166,37 @@ require 'php/getCharacter.php';
                     var critPerso = charItem.data("critique");
                     //var lvlPerso = charItem.data("level");
                     var viePerso = charItem.data("vie");
-
+                    charItem.data("is_equip", 0);
+                    $(this).data("is_equip", 1);
 
                     if (charItem.length == 1) {
                         character.attaque = parseInt(character.attaque) + parseInt(attInv) - parseInt(attPerso);
                         character.defense = parseInt(character.defense) + parseInt(defInv) - parseInt(defPerso);
                         character.critique = parseInt(character.critique) + parseInt(critInv) - parseInt(critPerso);
                         character.vie = parseInt(character.vie) + parseInt(vieInv) - parseInt(viePerso);
+                        $.ajax({
+                                url : 'php/unequip_item.php', // La ressource ciblée
+                                type : 'POST', // Le type de la requête HTTP.
+                                data : 'id_inventaire=' + charItem.data('id') + '&id_personnage='+ <?php echo $character->id_personnage ?>,
+                                success : function(code_html, statut){ // code_html contient le HTML renvoyé
+                                    alert(code_html);
+                                }
+                            });
                     } else {
                         character.attaque = parseInt(character.attaque) + parseInt(attInv);
                         character.defense = parseInt(character.defense) + parseInt(defInv);
                         character.critique = parseInt(character.critique) + parseInt(critInv);
                         character.vie = parseInt(character.vie) + parseInt(vieInv);
                     }
+                    $.ajax({
+                                url : 'php/equip_item.php', // La ressource ciblée
+                                type : 'POST', // Le type de la requête HTTP.
+                                data : 'id_inventaire=' + id_item + '&id_personnage='+ <?php echo $character->id_personnage ?>,
+                                success : function(code_html, statut){ // code_html contient le HTML renvoyé
+                                    alert(code_html);
+                                }
+                            });
+                    console.log("toto");
                     $("#inventory").find(".row").append(charItem);
                     if (itemType == 0) {
                         $("#sword").append(item);
@@ -200,12 +220,14 @@ require 'php/getCharacter.php';
 
     function removeItem() {
         $(".characterCell").click(function() {
+            console.log("tata");
             var item = $(this).children(".itemCell");
             var attInv = item.data("attaque");
             var defInv = item.data("defense");
             var critInv = item.data("critique");
             var lvlInv = item.data("level");
             var vieInv = item.data("vie");
+            item.data("is_equip", 0);
             character.attaque = parseInt(character.attaque) - parseInt(attInv);
             character.defense = parseInt(character.defense) - parseInt(defInv);
             character.critique = parseInt(character.critique) - parseInt(critInv);
@@ -215,6 +237,15 @@ require 'php/getCharacter.php';
             $('#persoCrit').text(character.critique + "%");
             $('#persoVie').text(character.vie);
             $("#inventory").find(".row").append(item);
+            $.ajax({
+                                url : 'php/unequip_item.php', // La ressource ciblée
+                                type : 'POST', // Le type de la requête HTTP.
+                                data : 'id_inventaire=' + item.data('id') + '&id_personnage='+ <?php echo $character->id_personnage ?>,
+                                success : function(code_html, statut){ // code_html contient le HTML renvoyé
+                                    alert(code_html);
+                                }
+                            });
+
         })
     }
 

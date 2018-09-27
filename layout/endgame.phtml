@@ -14,71 +14,71 @@ $cmpt=0;
                     </h2>
                 </div>
                 <?php if ($end_game==1) {?>
-                    <audio id="my_audio" src="sound/drop.mp3" autoplay="true"></audio>
-                    <div class="row d-flex justify-content-center">
-                        <div id="inventoryDrop" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
-                            <div class="win"></div>
-                            <h2>Drop</h2>
-                            <div class="row d-flex justify-content-center">
-                                <?php foreach ($item_droper as $i){ ?>
-                                <div data-item="<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1">
-                                    <img class="itemImg" src="img/<?php echo  $i->img ?>">
-                                    <div id="overlay<?php echo  $cmpt ?>" class="overlay">
+                <audio id="my_audio" src="sound/drop.mp3" autoplay="true"></audio>
+                <div class="row d-flex justify-content-center">
+                    <div id="inventoryDrop" class="col-lg-3 col-md-8 col-sm-8 m-2 box winBox">
+                        <div class="win"></div>
+                        <h2>Drop</h2>
+                        <div class="row d-flex justify-content-center">
+                            <?php foreach ($item_droper as $i){ ?>
+                            <div data-item="<?php echo  $cmpt ?>" class="col-lg-3 itemCell m-1">
+                                <img class="itemImg" src="img/<?php echo  $i->img ?>">
+                                <div id="overlay<?php echo  $cmpt ?>" class="overlay">
+                                    <div>
+                                        <h3>
+                                            <?php echo  $i->nom_equipement ?>
+                                        </h3>
+                                    </div>
+                                    <div>
                                         <div>
-                                            <h3>
-                                                <?php echo  $i->nom_equipement ?>
+                                            <h3>Level : <span>
+                                                    <?php echo  $i->level_min ?></span></h3>
+                                        </div>
+                                        <div>
+                                            <h3>Attaque :
+                                                <?php echo  $i->attaque ?>
                                             </h3>
                                         </div>
                                         <div>
-                                            <div>
-                                                <h3>Level : <span>
-                                                        <?php echo  $i->level_min ?></span></h3>
-                                            </div>
-                                            <div>
-                                                <h3>Attaque :
-                                                    <?php echo  $i->attaque ?>
-                                                </h3>
-                                            </div>
-                                            <div>
-                                                <h3>Defense : <span>
-                                                        <?php echo  $i->defense ?></span></h3>
-                                            </div>
-                                            <div>
-                                                <h3>Critique :
-                                                    <?php echo  $i->critique ?>
-                                                </h3>
-                                            </div>
-                                            <div>
-                                                <h3>Vie :
-                                                    <?php echo  $i->vie ?>
-                                                </h3>
-                                            </div>
+                                            <h3>Defense : <span>
+                                                    <?php echo  $i->defense ?></span></h3>
+                                        </div>
+                                        <div>
+                                            <h3>Critique :
+                                                <?php echo  $i->critique ?>
+                                            </h3>
+                                        </div>
+                                        <div>
+                                            <h3>Vie :
+                                                <?php echo  $i->vie ?>
+                                            </h3>
                                         </div>
                                     </div>
                                 </div>
-                                <?php $cmpt += 1; } ?>
                             </div>
+                            <?php $cmpt += 1; } ?>
+                        </div>
+                        <?php
+                            echo "Vous avez gagnez ".$xp_gagne." xp<br>";
+                            if ($up == true)
+                            {
+                                echo "Bravo vous avez up au niveau ".$niveau."<br>";
+                            }
+                            echo "level ".$niveau."<br>";
+                            echo $xp_perso."/".$nb_xp_by_niv."<br>";
+                            }else{ ?>
+                        <audio id="my_audio" src="sound/SadViolin.mp3" autoplay="true"></audio>
+                        <div class="row d-flex justify-content-center">
+                            <div id="inventoryDrop" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
+                                <div class="win"></div>
+                                <h2>Looser</h2>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <a href="Co.php?page=cmpgn" class="btn-default btn">Rejouer</a>
+                    </div>
+                </div>
 
-                        </div>
-                    </div>
-                <?php
-            echo "Vous avez gagnez ".$xp_gagne." xp<br>";
-            if ($up == true)
-            {
-                echo "Bravo vous avez up au niveau ".$niveau."<br>";
-            }
-            echo "level ".$niveau."<br>";
-            echo $xp_perso."/".$nb_xp_by_niv."<br>";
-            }else{ ?>
-                    <audio id="my_audio" src="sound/SadViolin.mp3" autoplay="true"></audio>
-                    <div class="row d-flex justify-content-center">
-                        <div id="inventoryDrop" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
-                            <div class="win"></div>
-                            <h2>Looser</h2>
-                        </div>
-                    </div>
-                <?php } ?>
-                <a href="Co.php?page=cmpgn" class="btn-default btn">Rejouer</a>
             </div>
 
         </div>
@@ -86,20 +86,20 @@ $cmpt=0;
 
 
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#my_audio").get(0).play();
-        $("#inventoryDrop").fadeIn(2000);
-    });
-
-    function showOverlay() {
-        $(".itemCell").hover(function() {
-            $(this).children().show();
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#my_audio").get(0).play();
+            $("#inventoryDrop").fadeIn(2000);
         });
-        $(".itemCell").mouseleave(function() {
-            $(this).children(".overlay").hide();
-        });
-    }
 
-    showOverlay();
-</script>
+        function showOverlay() {
+            $(".itemCell").hover(function() {
+                $(this).children().show();
+            });
+            $(".itemCell").mouseleave(function() {
+                $(this).children(".overlay").hide();
+            });
+        }
+
+        showOverlay();
+    </script>

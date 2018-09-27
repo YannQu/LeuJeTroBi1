@@ -49,6 +49,7 @@ require 'php/getCharacter.php';
                 <div class="row d-flex justify-content-center">
                     <div id="boots" class="col-lg-2 characterCell m-2 characterLeg"></div>
                 </div>
+                <a id="" class="btn-default btn" onclick="validerEquip()">Valider équipement</a>
             </div>
 
             <div id="inventory" class="col-lg-3 col-md-8 col-sm-8 m-2 box">
@@ -186,6 +187,11 @@ require 'php/getCharacter.php';
             $("#inventory").find(".row").append(item);
         })
     }
+
+    function validerEquip(){
+        console.log("bibop")
+    }
+
     removeItem();
     addItem();
     showOverlay();  

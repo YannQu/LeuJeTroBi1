@@ -58,7 +58,7 @@ require 'php/getCharacter.php';
                 <div class="cancel"></div>
                 <div class="row d-flex justify-content-center">
                     <?php foreach ($detailsInv as $i){ ?>
-                    <div class="col-lg-3 itemCell m-1" data-item="<?php echo $i->type_equipement ?>" data-level="<?php echo $i->level_min ?>" data-attaque="<?php echo $i->attaque ?>" data-defense="<?php echo $i->defense ?>" data-critique="<?php echo $i->critique ?>" data-vie="<?php echo $i->vie ?>">
+                    <div class="col-lg-3 itemCell m-1" data-id="<?php echo $i->id_inventaire ?>" data-item="<?php echo $i->type_equipement ?>" data-level="<?php echo $i->level_min ?>" data-attaque="<?php echo $i->attaque ?>" data-defense="<?php echo $i->defense ?>" data-critique="<?php echo $i->critique ?>" data-vie="<?php echo $i->vie ?>">
                         <img class="itemImg" src="img/<?php echo  $i->img ?>">
                         <div id="overlay<?php echo  $cmpt ?>" class="overlay">
                             <div>
@@ -129,6 +129,12 @@ require 'php/getCharacter.php';
                         if ($(this).hasClass("selectedTrashableItem")) {
                             $(this).removeClass("trashableItem");
                             $(this).remove();
+                            var id_inventaire = $(this).data('id');
+                            $.ajax({
+                                url : 'php/remove_item.php', // La ressource ciblée
+                                type : 'POST', // Le type de la requête HTTP.
+                                data : 'id_inventaire=' + id_inventaire
+                            });
                         }
                     });
 

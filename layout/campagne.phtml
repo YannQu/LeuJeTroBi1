@@ -1,20 +1,7 @@
-<script type="text/javascript">
-	$( document ).ready(function() {
-		var param = getUrlParameter('cmpgn');
-    	if (param == "yes") {
-    		$( "#campLink" ).addClass( "disabled" );
-    	}else{
-    		$( "#persoLink" ).addClass( "disabled" );
-    	}
-    	switch (expr) {
-    		case 'Oranges':
-    			console.log('Oranges are $0.59 a pound.');
-    			break;
-  			default:
-    			console.log('Sorry, we are out of ' + expr + '.');
-			}
-	});
-</script>
+<?php
+include 'php/campagne.php';
+?>
+
 
 <div class="row">
     <div class="container-fluid" id="createChar">
@@ -52,13 +39,13 @@
 	  									<div class="carte-support">
 		  									<div class="row row-carte">
 		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
+		  											<a href="Co.php?page=game&id_campagne=1" class="niv-home"></a>
 		  										</div>
 		  										<div class="element-ligne col-md-3 offset-md-1">
 
 		  										</div>
 		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
+		  											<a href="Co.php?page=game&id_campagne=2" class="niv-home"></a>
 		  										</div>
 		  									</div>
 		  									<div class="row row-carte">
@@ -67,13 +54,13 @@
 		  									</div>
 		  									<div class="row row-carte">
 		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
+		  											<a href="Co.php?page=game&id_campagne=3" class="niv-home"></a>
 		  										</div>
 		  										<div class="element-ligne col-md-3 offset-md-1">
 
 		  										</div>
 		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
+		  											<a href="Co.php?page=game&id_campagne=4" class="niv-home"></a>
 		  										</div>
 		  									</div>
 	  									</div>
@@ -84,13 +71,13 @@
 	  									<div class="carte-support">
 		  									<div class="row row-carte">
 		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
+		  											<a href="Co.php?page=game&id_campagne=5" class="niv-home"></a>
 		  										</div>
 		  										<div class="col-md-3 offset-md-1">
 
 		  										</div>
 		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
+		  											<a href="Co.php?page=game&id_campagne=6" class="niv-home"></a>
 		  										</div>
 		  									</div>
 		  									<div class="row row-carte">
@@ -101,13 +88,13 @@
 		  									</div>
 		  									<div class="row row-carte">
 		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
+		  											<a href="Co.php?page=game&id_campagne=7" class="niv-home"></a>
 		  										</div>
 		  										<div class="element-ligne col-md-3 offset-md-1">
 
 		  										</div>
 		  										<div class="element-arbre col-md-3 offset-md-1">
-		  											<a href="#" class="niv-home"></a>
+		  											<a href="Co.php?page=game&id_campagne=8" class="niv-home"></a>
 		  										</div>
 		  									</div>
 	  									</div>
@@ -165,3 +152,19 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+	/*$( document ).ready(function() {
+		var param = getUrlParameter('page');
+    	if (param == "cmpgn" || param == "endgame" ) {
+    		$( "#campLink" ).addClass( "disabled" );
+    	}else{
+    		$( "#persoLink" ).addClass( "disabled" );
+    	}
+	});*/
+	function playe(){
+		var campagne = <?php echo json_encode($detailsCJ, JSON_FORCE_OBJECT) ?>;
+		
+		console.log(campagne);
+	}
+	playe();
+</script>

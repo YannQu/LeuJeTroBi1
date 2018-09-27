@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 27 sep. 2018 à 11:32
--- Version du serveur :  5.7.21
--- Version de PHP :  5.6.35
+-- Host: localhost:3306
+-- Generation Time: Sep 27, 2018 at 03:04 PM
+-- Server version: 5.6.34-log
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,91 +19,87 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `miniboys`
+-- Database: `miniboys`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `campagne`
+-- Table structure for table `campagne`
 --
 
-DROP TABLE IF EXISTS `campagne`;
-CREATE TABLE IF NOT EXISTS `campagne` (
-  `id_campagne` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `campagne` (
+  `id_campagne` int(11) NOT NULL,
   `xp_gagne` int(11) NOT NULL,
   `niveau` int(11) NOT NULL,
-  `id_ennemi` int(11) NOT NULL,
-  `resolu` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_campagne`),
-  UNIQUE KEY `campagne_AK` (`niveau`),
-  KEY `campagne_ennemi0_FK` (`id_ennemi`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `id_ennemi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `campagne`
+-- Dumping data for table `campagne`
 --
 
-INSERT INTO `campagne` (`id_campagne`, `xp_gagne`, `niveau`, `id_ennemi`, `resolu`) VALUES
-(1, 100, 1, 1, 0);
+INSERT INTO `campagne` (`id_campagne`, `xp_gagne`, `niveau`, `id_ennemi`) VALUES
+(1, 100, 1, 1),
+(2, 200, 2, 5),
+(3, 400, 3, 2),
+(4, 800, 4, 4),
+(5, 1600, 5, 3);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `campagne_joueur`
+-- Table structure for table `campagne_joueur`
 --
 
-DROP TABLE IF EXISTS `campagne_joueur`;
-CREATE TABLE IF NOT EXISTS `campagne_joueur` (
-  `id_campagne_joueur` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `campagne_joueur` (
+  `id_campagne_joueur` int(11) NOT NULL,
   `is_resolut` tinyint(1) NOT NULL,
   `id_campagne` int(11) NOT NULL,
-  `id_personnage` int(11) NOT NULL,
-  PRIMARY KEY (`id_campagne_joueur`),
-  KEY `campagne_joueur_campagne0_FK` (`id_campagne`),
-  KEY `campagne_joueur_personnage1_FK` (`id_personnage`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `id_personnage` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `campagne_joueur`
+-- Dumping data for table `campagne_joueur`
 --
 
 INSERT INTO `campagne_joueur` (`id_campagne_joueur`, `is_resolut`, `id_campagne`, `id_personnage`) VALUES
-(1, 0, 1, 1);
+(1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ennemi`
+-- Table structure for table `ennemi`
 --
 
-DROP TABLE IF EXISTS `ennemi`;
-CREATE TABLE IF NOT EXISTS `ennemi` (
-  `id_ennemi` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ennemi` (
+  `id_ennemi` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `attaque` int(11) NOT NULL,
   `defense` int(11) NOT NULL,
   `vie` int(11) NOT NULL,
-  `critique` int(11) NOT NULL,
-  PRIMARY KEY (`id_ennemi`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `critique` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `ennemi`
+-- Dumping data for table `ennemi`
 --
 
 INSERT INTO `ennemi` (`id_ennemi`, `nom`, `attaque`, `defense`, `vie`, `critique`) VALUES
-(1, 'coccinelle', 5, 1, 100, 1);
+(1, 'coccinelle', 5, 1, 100, 1),
+(2, 'araignée', 15, 5, 150, 5),
+(3, 'asticot sous acide', 45, 15, 300, 15),
+(4, 'papillon', 20, 5, 200, 20),
+(5, 'chenille', 10, 10, 150, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `equipement`
+-- Table structure for table `equipement`
 --
 
-DROP TABLE IF EXISTS `equipement`;
-CREATE TABLE IF NOT EXISTS `equipement` (
-  `id_equipement` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `equipement` (
+  `id_equipement` int(11) NOT NULL,
   `type_equipement` int(11) NOT NULL DEFAULT '0',
   `nom_equipement` varchar(200) NOT NULL,
   `attaque` int(11) NOT NULL,
@@ -112,13 +108,11 @@ CREATE TABLE IF NOT EXISTS `equipement` (
   `critique` int(11) NOT NULL,
   `level_min` int(11) NOT NULL,
   `pour_loot` int(11) NOT NULL,
-  `img` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_equipement`),
-  UNIQUE KEY `nom_equipement` (`nom_equipement`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `img` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `equipement`
+-- Dumping data for table `equipement`
 --
 
 INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, `attaque`, `defense`, `vie`, `critique`, `level_min`, `pour_loot`, `img`) VALUES
@@ -128,28 +122,24 @@ INSERT INTO `equipement` (`id_equipement`, `type_equipement`, `nom_equipement`, 
 (4, 3, 'bottes de coccinnelle', 2, 3, 20, 15, 3, 45, '1_left lag_.png'),
 (5, 4, 'bouclier de coccinelle', 0, 10, 20, 30, 4, 25, '3_shield_.png'),
 (6, 0, 'baton de marche de vieux', 20, 0, 0, 90, 1, 50, '1_spear_.png'),
-(7, 0, 'pourfendeur de juifs', 50, 0, 0, 10, 1, 50, '2_ax.png'),
-(8, 0, 'dildonator 3000', 1000, 0, 0, 90, 1, 50, '1_stick.png');
+(7, 0, 'pourfendeur de champignons', 50, 0, 0, 10, 1, 50, '2_ax.png'),
+(8, 0, 'cure dent 3000', 1000, 0, 0, 90, 1, 50, '1_stick.png');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `inventaire`
+-- Table structure for table `inventaire`
 --
 
-DROP TABLE IF EXISTS `inventaire`;
-CREATE TABLE IF NOT EXISTS `inventaire` (
-  `id_inventaire` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `inventaire` (
+  `id_inventaire` int(11) NOT NULL,
   `id_personnage` int(11) NOT NULL,
   `id_equipement` int(11) NOT NULL,
-  `is_equip` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_inventaire`),
-  KEY `inventaire_personnage0_FK` (`id_personnage`),
-  KEY `inventaire_equipement1_FK` (`id_equipement`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `is_equip` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `inventaire`
+-- Dumping data for table `inventaire`
 --
 
 INSERT INTO `inventaire` (`id_inventaire`, `id_personnage`, `id_equipement`, `is_equip`) VALUES
@@ -165,12 +155,11 @@ INSERT INTO `inventaire` (`id_inventaire`, `id_personnage`, `id_equipement`, `is
 -- --------------------------------------------------------
 
 --
--- Structure de la table `personnage`
+-- Table structure for table `personnage`
 --
 
-DROP TABLE IF EXISTS `personnage`;
-CREATE TABLE IF NOT EXISTS `personnage` (
-  `id_personnage` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `personnage` (
+  `id_personnage` int(11) NOT NULL,
   `type_personnage` int(11) NOT NULL DEFAULT '0' COMMENT '0=guerrier 1=archer 2=mage',
   `nb_xp` int(11) NOT NULL,
   `level` int(11) NOT NULL,
@@ -178,13 +167,11 @@ CREATE TABLE IF NOT EXISTS `personnage` (
   `defense` int(11) NOT NULL,
   `vie` int(11) NOT NULL,
   `critique` int(11) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL,
-  PRIMARY KEY (`id_personnage`),
-  UNIQUE KEY `personnage_utilisateur0_AK` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `id_utilisateur` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `personnage`
+-- Dumping data for table `personnage`
 --
 
 INSERT INTO `personnage` (`id_personnage`, `type_personnage`, `nb_xp`, `level`, `attaque`, `defense`, `vie`, `critique`, `id_utilisateur`) VALUES
@@ -193,79 +180,183 @@ INSERT INTO `personnage` (`id_personnage`, `type_personnage`, `nb_xp`, `level`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `relation_equipement_campagne`
+-- Table structure for table `relation_equipement_campagne`
 --
 
-DROP TABLE IF EXISTS `relation_equipement_campagne`;
-CREATE TABLE IF NOT EXISTS `relation_equipement_campagne` (
+CREATE TABLE `relation_equipement_campagne` (
   `id_campagne` int(11) NOT NULL,
-  `id_equipement` int(11) NOT NULL,
-  PRIMARY KEY (`id_campagne`,`id_equipement`),
-  KEY `relation_equipement_campagne_equipement1_FK` (`id_equipement`)
+  `id_equipement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `relation_equipement_campagne`
+-- Dumping data for table `relation_equipement_campagne`
 --
 
 INSERT INTO `relation_equipement_campagne` (`id_campagne`, `id_equipement`) VALUES
-(1, 1);
+(1, 1),
+(2, 2),
+(2, 3),
+(3, 3),
+(4, 4),
+(1, 5),
+(5, 5),
+(3, 6),
+(4, 7),
+(5, 8);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id_utilisateur` int(11) NOT NULL,
   `password` varchar(250) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_utilisateur`),
-  UNIQUE KEY `utilisateur_AK0` (`username`,`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_utilisateur`, `password`, `username`, `email`) VALUES
 (1, '$2y$10$Ti2ugPnj2/VW6CHvMBhOmeTk2iynTMqCeLKK2kK1FXV6E.SogOL82', 'test', 't@t.t');
 
 --
--- Contraintes pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Contraintes pour la table `campagne`
+-- Indexes for table `campagne`
+--
+ALTER TABLE `campagne`
+  ADD PRIMARY KEY (`id_campagne`),
+  ADD UNIQUE KEY `campagne_AK` (`niveau`),
+  ADD KEY `campagne_ennemi0_FK` (`id_ennemi`);
+
+--
+-- Indexes for table `campagne_joueur`
+--
+ALTER TABLE `campagne_joueur`
+  ADD PRIMARY KEY (`id_campagne_joueur`),
+  ADD KEY `campagne_joueur_campagne0_FK` (`id_campagne`),
+  ADD KEY `campagne_joueur_personnage1_FK` (`id_personnage`);
+
+--
+-- Indexes for table `ennemi`
+--
+ALTER TABLE `ennemi`
+  ADD PRIMARY KEY (`id_ennemi`);
+
+--
+-- Indexes for table `equipement`
+--
+ALTER TABLE `equipement`
+  ADD PRIMARY KEY (`id_equipement`),
+  ADD UNIQUE KEY `nom_equipement` (`nom_equipement`);
+
+--
+-- Indexes for table `inventaire`
+--
+ALTER TABLE `inventaire`
+  ADD PRIMARY KEY (`id_inventaire`),
+  ADD KEY `inventaire_personnage0_FK` (`id_personnage`),
+  ADD KEY `inventaire_equipement1_FK` (`id_equipement`);
+
+--
+-- Indexes for table `personnage`
+--
+ALTER TABLE `personnage`
+  ADD PRIMARY KEY (`id_personnage`),
+  ADD UNIQUE KEY `personnage_utilisateur0_AK` (`id_utilisateur`);
+
+--
+-- Indexes for table `relation_equipement_campagne`
+--
+ALTER TABLE `relation_equipement_campagne`
+  ADD PRIMARY KEY (`id_campagne`,`id_equipement`),
+  ADD KEY `relation_equipement_campagne_equipement1_FK` (`id_equipement`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_utilisateur`),
+  ADD UNIQUE KEY `utilisateur_AK0` (`username`,`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `campagne`
+--
+ALTER TABLE `campagne`
+  MODIFY `id_campagne` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `campagne_joueur`
+--
+ALTER TABLE `campagne_joueur`
+  MODIFY `id_campagne_joueur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `ennemi`
+--
+ALTER TABLE `ennemi`
+  MODIFY `id_ennemi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `equipement`
+--
+ALTER TABLE `equipement`
+  MODIFY `id_equipement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `inventaire`
+--
+ALTER TABLE `inventaire`
+  MODIFY `id_inventaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `personnage`
+--
+ALTER TABLE `personnage`
+  MODIFY `id_personnage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `campagne`
 --
 ALTER TABLE `campagne`
   ADD CONSTRAINT `campagne_ennemi0_FK` FOREIGN KEY (`id_ennemi`) REFERENCES `ennemi` (`id_ennemi`);
 
 --
--- Contraintes pour la table `campagne_joueur`
+-- Constraints for table `campagne_joueur`
 --
 ALTER TABLE `campagne_joueur`
   ADD CONSTRAINT `campagne_joueur_campagne0_FK` FOREIGN KEY (`id_campagne`) REFERENCES `campagne` (`id_campagne`),
   ADD CONSTRAINT `campagne_joueur_personnage1_FK` FOREIGN KEY (`id_personnage`) REFERENCES `personnage` (`id_personnage`);
 
 --
--- Contraintes pour la table `inventaire`
+-- Constraints for table `inventaire`
 --
 ALTER TABLE `inventaire`
   ADD CONSTRAINT `inventaire_equipement1_FK` FOREIGN KEY (`id_equipement`) REFERENCES `equipement` (`id_equipement`),
   ADD CONSTRAINT `inventaire_personnage0_FK` FOREIGN KEY (`id_personnage`) REFERENCES `personnage` (`id_personnage`);
 
 --
--- Contraintes pour la table `personnage`
+-- Constraints for table `personnage`
 --
 ALTER TABLE `personnage`
   ADD CONSTRAINT `personnage_utilisateur0_FK` FOREIGN KEY (`id_utilisateur`) REFERENCES `users` (`id_utilisateur`);
 
 --
--- Contraintes pour la table `relation_equipement_campagne`
+-- Constraints for table `relation_equipement_campagne`
 --
 ALTER TABLE `relation_equipement_campagne`
   ADD CONSTRAINT `relation_equipement_campagne_campagne0_FK` FOREIGN KEY (`id_campagne`) REFERENCES `campagne` (`id_campagne`),

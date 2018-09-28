@@ -18,6 +18,7 @@ $cmpt=0;
                     echo "<div class='campagneBox'>";
                     echo "<h2 class='campagneBoxTitle'>STAGE".$cmp->niveau."</h2>";
                     echo "<div class='campagneBoxMob'></div>";
+                    echo "<p class='campagneBoxText'>Résolu : <span class='campagneResolu-".$cmp->is_resolut."'></span></p>";
                     echo "<p class='campagneBoxText'>Nom ennemi : ".$cmp->ennemi->nom."</p>";
                     echo "<p class='campagneBoxText'>xp gagné :  ".$cmp->xp_gagne."</p>";
                 ?>
@@ -64,7 +65,7 @@ $cmpt=0;
                     <?php $cmpt += 1;  
                        }
                 echo "</div>";
-                echo  "<a class='btn btn-default campagneBtn-".$cmp->is_resolut."' href='Co.php?page=game&id_campagne=".$cmp->id_campagne." '>Go</a>";
+                echo  "<a class='btn btn-default' href='Co.php?page=game&id_campagne=".$cmp->id_campagne." '>Go</a>";
                 echo "</div>";
                 }
                 ?>

@@ -1,0 +1,88 @@
+<?php
+include 'php/campagne.php';
+$cmpt=0;
+?>
+
+<style>
+    *{
+        border: 1px solid red;
+    }
+</style>
+<div class="row">
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+
+            <?php include "header.phtml";?>
+            <div class="container-fluid">
+            <div class="row">
+            <div class='col-6 campagneBox'>
+            <?php foreach ($detailsCJ as $cmp)
+            {
+                echo "STAGE ".$cmp->niveau."<br>";
+                echo "Nom ennemi : ".$cmp->ennemi->nom."<br>";
+                echo "résolut :  ".$cmp->is_resolut."<br>";
+                echo "xp gagné :  ".$cmp->xp_gagne."<br>";
+            ?>
+            <a href="Co.php?page=game&id_campagne=<?php echo $cmp->id_campagne ?>">play</a>
+       
+            <?php
+ 	foreach ($cmp->items as $i){ ?>
+            <div class="itemCell" data-item="<?php echo $i->type_equipement ?>" data-level="<?php echo $i->level_min ?>" data-attaque="<?php echo $i->attaque ?>" data-defense="<?php echo $i->defense ?>" data-critique="<?php echo $i->critique ?>" data-vie="<?php echo $i->vie ?>">
+                <img class="itemImg" src="img/<?php echo  $i->img ?>">
+                <div id="overlay<?php echo  $cmpt ?>" class="overlay">
+                    <div>
+                        <h3>
+                            <?php echo  $i->nom_equipement ?>
+                        </h3>
+                    </div>
+                    <div>
+                        <div>
+                            <h3>Level : <span>
+                                    <?php echo  $i->level_min ?></span></h3>
+                        </div>
+                        <div>
+                            <h3>Attaque : <span>
+                                    <?php echo  $i->attaque ?></span></h3>
+                        </div>
+                        <div>
+                            <h3>Defense : <span>
+                                    <?php echo  $i->defense ?></span></h3>
+                        </div>
+                        <div>
+                            <h3>Critique : <span>
+                                    <?php echo  $i->critique ?></span></h3>
+                        </div>
+                        <div>
+                            <h3>Vie : <span>
+                                    <?php echo  $i->vie ?></span></h3>
+                        </div>
+                        <div>
+                            <h3>Pourcentage de drop : <span>
+                                    <?php echo  $i->pour_loot ?>%</span></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div> 
+            <?php $cmpt += 1; } 
+
+}
+
+?>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+    function showOverlay() {
+        $(".itemCell").hover(function() {
+            $(this).children().show();
+        });
+        $(".itemCell").mouseleave(function() {
+            $(this).children(".overlay").hide();
+        });
+    }
+
+    showOverlay();
+</script>

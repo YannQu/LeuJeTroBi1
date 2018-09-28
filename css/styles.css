@@ -2,7 +2,7 @@ body,
 html {
     height: 100%;
     width: 100%;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Racing Sans One', cursive;
     font-weight: 300;
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
     color: #60a20b;
@@ -400,7 +400,8 @@ a:hover {
     background-color: black;
     color: white;
     height: auto;
-    width: 150px;
+    width: auto;
+    text-align: center;
     text-shadow: none;
     border-radius: 3px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -415,7 +416,10 @@ a:hover {
     font-size: 15px;
 
 }
-
+.overlayTitle{
+    font-size: 20px!important;
+    text-align: center;
+}
 /*create char*/
 #createChar {
     min-height: 100vh;
@@ -954,4 +958,57 @@ a:hover {
     line-height: 50px;
     border-radius: 5px;
     font-weight: bold;
+}
+
+/*campagne*/
+#campagne {
+    background-image: url(../img/campagneBackground.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.campagneContainer{
+}
+.campagneBox {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    min-height: 400px;
+    border-radius: 5px;
+   
+    padding: 0px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    padding: 10px;
+    width: 30vw;
+    margin: 10px;
+}
+
+.campagneBoxMob {
+    background-image: url(../img/spider.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 100%;
+}
+
+.campagneBoxTitle {
+    text-shadow: none;
+}
+
+.campagneBoxText {
+    text-shadow: none;
+    text-align: center;
+}
+
+.campagnItemLoot {
+    width: 50px;
+    background-color: transparent;
+}
+
+.campagneBtn-0 {
+    filter: grayscale(50);
+}
+.campagneBtn-0:hover {
+    background-image: url(../img/baseBtn.png);
+    filter: grayscale(50);
 }

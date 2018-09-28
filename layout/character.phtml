@@ -207,6 +207,8 @@ require 'php/getCharacter.php';
                     $('#persoDef').text(character.defense);
                     $('#persoCrit').text(character.critique + "%");
                     $('#persoVie').text(character.vie);
+                }else{
+                    alert("Vous n'avez pas le lvl requis");
                 }
             }
         });

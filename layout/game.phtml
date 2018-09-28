@@ -81,7 +81,7 @@ var_dump($equipement);*/
         div_txt.innerHTML += "Votre ennemi a fait " + type[type_e] + "</br>";
         $("#playerAttack").attr("src", "img/" + type[type_j] + ".png");
         $("#enemiAttack").attr("src", "img/" + type[type_e] + ".png");
-
+        animateLifeBar(type[type_j]);
         var rslt;
         if (type_e == type_j) {
             rslt = 0;
@@ -252,5 +252,5 @@ var_dump($equipement);*/
     // Make it rain
     createRain();
     autoScrollOnclickBtn();
-    animateLifeBar();
+    
 </script>

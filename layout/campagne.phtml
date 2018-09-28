@@ -17,7 +17,7 @@ $cmpt=0;
                     <?php foreach ($detailsCJ as $cmp){
                     echo "<div class='campagneBox'>";
                     echo "<h2 class='campagneBoxTitle'>STAGE".$cmp->niveau."</h2>";
-                    echo "<div class='campagneBoxMob'></div>";
+                    echo "<div class='campagneBoxMob enemy-".$cmp->niveau."'></div>";
                     echo "<p class='campagneBoxText'>Résolu : <span class='campagneResolu-".$cmp->is_resolut."'></span></p>";
                     echo "<p class='campagneBoxText'>Nom ennemi : ".$cmp->ennemi->nom."</p>";
                     echo "<p class='campagneBoxText'>xp gagné :  ".$cmp->xp_gagne."</p>";

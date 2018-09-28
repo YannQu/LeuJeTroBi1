@@ -76,8 +76,8 @@ $cmpt=0;
                         </div>
                         <?php } ?>
                         <div class="d-flex justify-content-center">
-                        <a href="Co.php?page=game&id_campagne=<?php echo $campagne->id_campagne?>" class="btn-default btn">Rejouer</a>
-                        <?php if ($bool_next == true) {?>
+                        <a href="Co.php?page=game&id_campagne=<?php echo $id_campagne?>" class="btn-default btn">Rejouer</a>
+                        <?php if ($end_game==1 && $bool_next == true) {?>
                         <a href="Co.php?page=game&id_campagne=<?php echo $id_next_cmp?>" class="btn-default btn">Suivant</a>
                         <?php }?>
                         </div>

@@ -221,10 +221,10 @@ var_dump($equipement);*/
     function animateLifeBar() {
         $(".battleBtn").click(function() {
             $(".playerLifeBar").animate({
-                width: 100*perso.current_vie/type[type_e] + '%'
+                width: perso.current_vie / perso.vie_max * 100 + '%'
             });
             $(".enemiLifeBar").animate({
-                width: ennemi.current_vie + '%'
+                width: ennemi.current_vie / ennemi.vie_max * 100 + '%'
             });
         });
     }

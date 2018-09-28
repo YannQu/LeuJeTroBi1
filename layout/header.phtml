@@ -2,7 +2,7 @@
 <div id="menu" class="d-flex justify-content-center">
     <h1 class="logo">MiniBoys</h1>
     <?php if (!isset($_GET['insc'])) { ?>
-    	<a href="Co.php" id="persoLink" class="btn-default btn">Personnage</a>
+    	<a href="Co.php?page=character" id="persoLink" class="btn-default btn">Personnage</a>
     	<a href="Co.php?page=cmpgn" id="campLink" class="btn-default btn">Campagne</a>
     <?php } ?>
     <a href="php/delete.php" class=" btn-default btn off ">Deconnexion</a>
@@ -26,9 +26,9 @@
 
 	$( document ).ready(function() {
 		var param = getUrlParameter('page');
-    	if (param == "cmpgn" || param == "endgame" ) {
+    	if (param == "cmpgn" ) {
     		$( "#campLink" ).addClass( "disabled" );
-    	}else{
+    	}else if (param == "character"){
     		$( "#persoLink" ).addClass( "disabled" );
     	}
 	});

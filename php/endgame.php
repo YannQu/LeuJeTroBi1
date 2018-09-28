@@ -59,6 +59,19 @@ else
                    'level' => $niveau,
                    'id_personnage' => $character->id_personnage]);
     
+    $req = $pdo->prepare("UPDATE `campagne_joueur` SET `is_resolut` = '1' WHERE id_campagne = :id_campagne AND id_personnage = :id_personnage");
+    $req->execute(['id_campagne' => $id_campagne,
+                   'id_personnage' => $character->id_personnage]);
+
+    $id_next_cmp = $campagne->id_campagne + 1;
+    $req = $pdo->prepare('SELECT * FROM campagne WHERE id_campagne = :id_campagne');
+    $req->execute(['id_campagne' => $id_next_cmp]);
+    $next_cmp = $req->fetch(PDO::FETCH_OBJ);
+    $bool_next = true;
+    if ($next_cmp == null)
+    {
+        $bool_next = false;
+    }    
 }
 
 ?>

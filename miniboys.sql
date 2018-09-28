@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 27 sep. 2018 à 15:46
+-- Généré le :  ven. 28 sep. 2018 à 08:13
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `campagne` (
   PRIMARY KEY (`id_campagne`),
   UNIQUE KEY `campagne_AK` (`niveau`),
   KEY `campagne_ennemi0_FK` (`id_ennemi`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `campagne`
@@ -48,7 +48,8 @@ INSERT INTO `campagne` (`id_campagne`, `xp_gagne`, `niveau`, `id_ennemi`) VALUES
 (2, 200, 2, 5),
 (3, 400, 3, 2),
 (4, 800, 4, 4),
-(5, 1600, 5, 3);
+(5, 1600, 5, 3),
+(6, 3200, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `campagne_joueur` (
   PRIMARY KEY (`id_campagne_joueur`),
   KEY `campagne_joueur_campagne0_FK` (`id_campagne`),
   KEY `campagne_joueur_personnage1_FK` (`id_personnage`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `campagne_joueur`
@@ -76,7 +77,8 @@ INSERT INTO `campagne_joueur` (`id_campagne_joueur`, `is_resolut`, `id_campagne`
 (2, 0, 2, 1),
 (3, 0, 3, 1),
 (4, 0, 4, 1),
-(5, 0, 5, 1);
+(5, 0, 5, 1),
+(6, 0, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `ennemi` (
   `vie` int(11) NOT NULL,
   `critique` int(11) NOT NULL,
   PRIMARY KEY (`id_ennemi`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `ennemi`
@@ -104,7 +106,8 @@ INSERT INTO `ennemi` (`id_ennemi`, `nom`, `attaque`, `defense`, `vie`, `critique
 (2, 'araignée', 15, 5, 150, 5),
 (3, 'asticot sous acide', 45, 15, 300, 15),
 (4, 'papillon', 20, 5, 200, 20),
-(5, 'chenille', 10, 10, 150, 1);
+(5, 'chenille', 10, 10, 150, 1),
+(6, 'Menthe religieuse', 100, 50, 250, 30);
 
 -- --------------------------------------------------------
 
@@ -229,7 +232,9 @@ INSERT INTO `relation_equipement_campagne` (`id_campagne`, `id_equipement`) VALU
 (5, 5),
 (3, 6),
 (4, 7),
-(5, 8);
+(6, 7),
+(5, 8),
+(6, 8);
 
 -- --------------------------------------------------------
 

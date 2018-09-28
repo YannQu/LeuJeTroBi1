@@ -120,7 +120,7 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']) &&
         if ($character == false) {
             header('Location: Co.php?insc=yes');
         }else{
-            header('Location: Co.php');
+            header('Location: Co.php?page=character');
         }
         exit();
     }
